@@ -132,7 +132,7 @@
         }
 
         .logo-img {
-            height: 45px;
+            height: 60px; /* Increased from 45px */
             width: auto;
             object-fit: contain;
             transition: var(--transition);
@@ -246,7 +246,7 @@
         }
 
         .mobile-logo-img {
-            height: 38px;
+            height: 50px; /* Increased from 38px */
             width: auto;
             object-fit: contain;
         }
@@ -632,21 +632,21 @@
             color: var(--gray-600);
         }
 
-        /* Categories */
+        /* Categories - Updated to make them smaller and on the same line */
         .categories-section {
             margin: 40px 0;
         }
 
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr); /* Fixed to 4 columns */
+            gap: 15px; /* Reduced gap */
         }
 
         .category-card {
             background: var(--light);
-            border-radius: 20px;
-            padding: 30px 15px;
+            border-radius: 15px; /* Reduced border radius */
+            padding: 20px 10px; /* Reduced padding */
             text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -673,21 +673,21 @@
         }
 
         .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-5px); /* Reduced transform */
+            box-shadow: var(--shadow-lg); /* Reduced shadow */
             border-color: var(--primary);
         }
 
         .category-icon {
-            width: 65px;
-            height: 65px;
-            margin: 0 auto 15px;
+            width: 50px; /* Reduced from 65px */
+            height: 50px; /* Reduced from 65px */
+            margin: 0 auto 10px; /* Reduced margin */
             background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.3rem; /* Reduced from 1.6rem */
             color: var(--primary);
             transition: var(--transition);
             position: relative;
@@ -697,22 +697,22 @@
         .category-card:hover .category-icon {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+            transform: scale(1.05); /* Reduced scale */
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3); /* Reduced shadow */
         }
 
         .category-name {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.9rem; /* Reduced from 1rem */
             position: relative;
             z-index: 1;
             color: var(--dark);
         }
 
         .category-count {
-            font-size: 0.8rem;
+            font-size: 0.75rem; /* Reduced from 0.8rem */
             color: var(--gray-500);
-            margin-top: 5px;
+            margin-top: 3px; /* Reduced margin */
             position: relative;
             z-index: 1;
         }
@@ -949,7 +949,7 @@
             font-size: 0.95rem;
         }
 
-        /* How It Works Section - Zepto/Blinkit Style */
+        /* How It Works Section - Improved Mobile View */
         .how-it-works-section {
             margin: 60px 0;
             padding: 50px 0;
@@ -1034,118 +1034,82 @@
             line-height: 1.5;
         }
 
-        /* Brands Section - Zepto/Blinkit Style */
-        .brands-section {
+        /* Suggestion Section */
+        .suggestion-section {
             margin: 60px 0;
-        }
-
-        .brands-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .brand-card {
-            background: var(--light);
-            border-radius: 15px;
-            padding: 20px;
-            width: 160px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--gray-200);
-        }
-
-        .brand-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .brand-logo {
-            max-width: 100%;
-            max-height: 60px;
-            object-fit: contain;
-        }
-
-        /* Features Section - Enhanced */
-        .features-section {
-            margin: 60px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: var(--light);
-            border-radius: 20px;
-            padding: 30px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), rgba(255, 107, 107, 0.05));
+            border-radius: 25px;
             text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--gray-200);
-            position: relative;
-            overflow: hidden;
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
+        .suggestion-container {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
-        }
-
-        .feature-title {
+        .suggestion-title {
+            font-size: 1.8rem;
             font-weight: 700;
-            font-size: 1.2rem;
             margin-bottom: 15px;
             color: var(--dark);
         }
 
-        .feature-desc {
+        .suggestion-desc {
+            font-size: 1rem;
             color: var(--gray-600);
+            margin-bottom: 30px;
             line-height: 1.6;
+        }
+
+        .suggestion-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .suggestion-input {
+            padding: 15px 20px;
+            border: 2px solid var(--gray-200);
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--light);
+        }
+
+        .suggestion-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--light);
+            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
+        }
+
+        .suggestion-btn {
+            padding: 15px 30px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: center;
+        }
+
+        .suggestion-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .suggestion-success {
+            display: none;
+            padding: 15px;
+            background: rgba(6, 214, 160, 0.1);
+            border-radius: 15px;
+            color: var(--success);
+            font-weight: 600;
+            margin-top: 15px;
         }
 
         /* Cart */
@@ -2128,26 +2092,26 @@
             }
 
             .categories-grid {
-                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                grid-template-columns: repeat(2, 1fr); /* Changed to 2 columns for mobile */
                 gap: 15px;
             }
 
             .category-card {
-                padding: 25px 10px;
+                padding: 20px 10px;
             }
 
             .category-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 1.4rem;
+                width: 45px; /* Slightly smaller for mobile */
+                height: 45px;
+                font-size: 1.2rem;
             }
 
             .category-name {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .category-count {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
 
             .products-grid {
@@ -2397,14 +2361,17 @@
                 max-width: 300px;
             }
 
-            /* Brands Section - Mobile */
-            .brands-container {
-                gap: 15px;
+            /* Suggestion Section - Mobile */
+            .suggestion-section {
+                padding: 30px 15px;
             }
 
-            .brand-card {
-                width: 140px;
-                height: 80px;
+            .suggestion-title {
+                font-size: 1.5rem;
+            }
+
+            .suggestion-desc {
+                font-size: 0.95rem;
             }
         }
 
@@ -2429,10 +2396,6 @@
 
             .qty-value {
                 font-size: 0.85rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -2646,7 +2609,7 @@
             </div>
         </section>
 
-        <!-- How It Works Section - Zepto/Blinkit Style -->
+        <!-- How It Works Section - Improved Mobile View -->
         <section class="how-it-works-section">
             <div class="section-title">
                 How RailQuick Works
@@ -2689,100 +2652,18 @@
             </div>
         </section>
 
-        <!-- Brands Section - Zepto/Blinkit Style -->
-        <section class="brands-section">
-            <div class="section-title">
-                Popular Brands Available
-            </div>
-            <div class="brands-container">
-                <div class="brand-card">
-                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
-                </div>
-                <div class="brand-card">
-                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
-                </div>
-                <div class="brand-card">
-                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
-                </div>
-                <div class="brand-card">
-                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
-                </div>
-                <div class="brand-card">
-                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
-                </div>
-                <div class="brand-card">
-                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
-                </div>
-                <div class="brand-card">
-                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
-                </div>
-                <div class="brand-card">
-                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section - Enhanced -->
-        <section class="features-section">
-            <div class="section-title">
-                Why Choose RailQuick?
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3 class="feature-title">Fast Delivery</h3>
-                    <p class="feature-desc">Get your food and essentials delivered at the next station, no long waits!</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Live Tracking</h3>
-                    <p class="feature-desc">Track your order in real-time as it approaches your train.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Secure Payment</h3>
-                    <p class="feature-desc">Multiple payment options with secure transactions for your peace of mind.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="feature-title">24/7 Support</h3>
-                    <p class="feature-desc">Our customer support team is always ready to help you with your queries.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3 class="feature-title">Local Specialties</h3>
-                    <p class="feature-desc">Enjoy regional delicacies from different stations during your journey.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3 class="feature-title">Hygienic Packaging</h3>
-                    <p class="feature-desc">All food is prepared in hygienic conditions and packed safely for travel.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tag"></i>
-                    </div>
-                    <h3 class="feature-title">Best Prices</h3>
-                    <p class="feature-desc">Get the best deals and offers on food and travel essentials.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-battery-full"></i>
-                    </div>
-                    <h3 class="feature-title">Travel Essentials</h3>
-                    <p class="feature-desc">From chargers to pillows, get all your travel needs delivered to your seat.</p>
+        <!-- Suggestion Section -->
+        <section class="suggestion-section">
+            <div class="suggestion-container">
+                <h2 class="suggestion-title">Can't find what you're looking for?</h2>
+                <p class="suggestion-desc">Let us know what products you'd like to see on RailQuick and we'll do our best to make them available!</p>
+                <form class="suggestion-form" id="suggestionForm">
+                    <input type="email" class="suggestion-input" id="suggestionEmail" placeholder="Your email address" required>
+                    <textarea class="suggestion-input" id="suggestionText" placeholder="Tell us what products you'd like to see..." rows="4" required></textarea>
+                    <button type="submit" class="suggestion-btn">Send Suggestion</button>
+                </form>
+                <div class="suggestion-success" id="suggestionSuccess">
+                    Thank you for your suggestion! We'll review it and get back to you soon.
                 </div>
             </div>
         </section>
@@ -3567,6 +3448,7 @@
             renderProducts('all');
             setupEventListeners();
             updateCategoryCounts();
+            updateCart();
         });
 
         // Go to home function
@@ -3666,27 +3548,59 @@
             });
 
             // Add event listeners for quantity controls
-            document.querySelectorAll('.qty-btn.decrease').forEach(btn => {
+            attachQuantityListeners(containerId);
+        }
+
+        // Attach event listeners to quantity controls
+        function attachQuantityListeners(containerId) {
+            // Decrease buttons
+            document.querySelectorAll(`#${containerId} .qty-btn.decrease`).forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const id = parseInt(btn.closest('.product-quantity').dataset.id);
                     decreaseQuantity(id);
+                    // Re-render to update the UI
+                    if (isCategoryView) {
+                        showCategoryModal(currentCategory);
+                    } else if (searchQuery) {
+                        performSearch(searchQuery);
+                    } else {
+                        renderProducts(currentCategory);
+                    }
                 });
             });
             
-            document.querySelectorAll('.qty-btn.increase').forEach(btn => {
+            // Increase buttons
+            document.querySelectorAll(`#${containerId} .qty-btn.increase`).forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const id = parseInt(btn.closest('.product-quantity').dataset.id);
                     increaseQuantity(id);
+                    // Re-render to update the UI
+                    if (isCategoryView) {
+                        showCategoryModal(currentCategory);
+                    } else if (searchQuery) {
+                        performSearch(searchQuery);
+                    } else {
+                        renderProducts(currentCategory);
+                    }
                 });
             });
             
-            document.querySelectorAll('.qty-btn.add-to-cart').forEach(btn => {
+            // Add to cart buttons
+            document.querySelectorAll(`#${containerId} .qty-btn.add-to-cart`).forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const id = parseInt(btn.closest('.product-quantity').dataset.id);
                     addToCart(id);
+                    // Re-render to update the UI
+                    if (isCategoryView) {
+                        showCategoryModal(currentCategory);
+                    } else if (searchQuery) {
+                        performSearch(searchQuery);
+                    } else {
+                        renderProducts(currentCategory);
+                    }
                 });
             });
         }
@@ -3735,6 +3649,8 @@
                     addToCart(product.id);
                     suggestionsContainer.classList.remove('active');
                     suggestionsContainer.parentElement.querySelector('input').value = '';
+                    // Update cart count immediately
+                    updateCart();
                 });
                 suggestionsContainer.appendChild(suggestion);
             });
@@ -3815,35 +3731,7 @@
             });
             
             // Add event listeners for quantity controls in search results
-            document.querySelectorAll('#searchResultsGrid .qty-btn.decrease').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
-                    decreaseQuantity(id);
-                    // Re-render search results to update cart state
-                    performSearch(searchQuery);
-                });
-            });
-            
-            document.querySelectorAll('#searchResultsGrid .qty-btn.increase').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
-                    increaseQuantity(id);
-                    // Re-render search results to update cart state
-                    performSearch(searchQuery);
-                });
-            });
-            
-            document.querySelectorAll('#searchResultsGrid .qty-btn.add-to-cart').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
-                    addToCart(id);
-                    // Re-render search results to update cart state
-                    performSearch(searchQuery);
-                });
-            });
+            attachQuantityListeners('searchResultsGrid');
         }
 
         // Increase quantity
@@ -3872,6 +3760,108 @@
                 cart = cart.filter(item => item.id !== productId);
                 updateCart();
             }
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCart();
+        }
+
+        // Update cart
+        function updateCart() {
+            const count = document.getElementById('cartCount');
+            const total = document.getElementById('cartTotal');
+            const items = document.getElementById('cartItems');
+            
+            // Calculate total items correctly
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            count.textContent = totalItems;
+            
+            // Make sure count is visible and properly styled
+            if (totalItems > 0) {
+                count.style.display = 'flex';
+                count.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    count.style.transform = 'scale(1)';
+                }, 300);
+            } else {
+                count.style.display = 'none';
+            }
+            
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            total.textContent = `₹${totalPrice}`;
+            
+            items.innerHTML = '';
+            if (cart.length === 0) {
+                items.innerHTML = '<p style="text-align:center; padding:2rem;">Your cart is empty</p>';
+                return;
+            }
+            
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">₹${item.price}</div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn decrease" data-id="${item.id}">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span>${item.quantity}</span>
+                            <button class="qty-btn increase" data-id="${item.id}">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <i class="fas fa-trash remove-item" data-id="${item.id}"></i>
+                `;
+                items.appendChild(cartItem);
+            });
+            
+            // Quantity controls
+            document.querySelectorAll('#cartItems .increase').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = parseInt(btn.dataset.id);
+                    const item = cart.find(i => i.id === id);
+                    if (item) {
+                        item.quantity++;
+                        updateCart();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('#cartItems .decrease').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = parseInt(btn.dataset.id);
+                    const item = cart.find(i => i.id === id);
+                    if (item && item.quantity > 1) {
+                        item.quantity--;
+                        updateCart();
+                    } else if (item && item.quantity === 1) {
+                        cart = cart.filter(i => i.id !== id);
+                        updateCart();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('#cartItems .remove-item').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = parseInt(btn.dataset.id);
+                    cart = cart.filter(i => i.id !== id);
+                    updateCart();
+                });
+            });
         }
 
         // Setup event listeners
@@ -4107,10 +4097,36 @@
                     document.getElementById('mobileNotificationDropdown').classList.remove('active');
                 }
             });
+
+            // Suggestion form
+            document.getElementById('suggestionForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('suggestionEmail').value;
+                const suggestion = document.getElementById('suggestionText').value;
+                
+                // For demo purposes, just log suggestion
+                console.log('Suggestion submitted:', {
+                    email: email,
+                    suggestion: suggestion
+                });
+                
+                // Show success message
+                document.getElementById('suggestionSuccess').style.display = 'block';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    document.getElementById('suggestionForm').reset();
+                    document.getElementById('suggestionSuccess').style.display = 'none';
+                }, 3000);
+            });
         }
 
         // Show category modal
         function showCategoryModal(category) {
+            currentCategory = category;
+            isCategoryView = true;
+            
             const modal = document.getElementById('categoryModal');
             const title = document.getElementById('categoryModalTitle');
             const grid = document.getElementById('categoryProductsGrid');
@@ -4176,137 +4192,10 @@
             });
             
             // Add event listeners for quantity controls
-            document.querySelectorAll('#categoryProductsGrid .qty-btn.decrease').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
-                    decreaseQuantity(id);
-                    // Re-render category modal to update cart state
-                    showCategoryModal(category);
-                });
-            });
-            
-            document.querySelectorAll('#categoryProductsGrid .qty-btn.increase').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
-                    increaseQuantity(id);
-                    // Re-render category modal to update cart state
-                    showCategoryModal(category);
-                });
-            });
-            
-            document.querySelectorAll('#categoryProductsGrid .qty-btn.add-to-cart').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
-                    addToCart(id);
-                    // Re-render category modal to update cart state
-                    showCategoryModal(category);
-                });
-            });
+            attachQuantityListeners('categoryProductsGrid');
             
             // Show modal
             modal.classList.add('active');
-        }
-
-        // Add to cart
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const existing = cart.find(item => item.id === productId);
-            
-            if (existing) {
-                existing.quantity++;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-            
-            updateCart();
-        }
-
-        // Update cart
-        function updateCart() {
-            const count = document.getElementById('cartCount');
-            const total = document.getElementById('cartTotal');
-            const items = document.getElementById('cartItems');
-            
-            // Calculate total items correctly
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            count.textContent = totalItems;
-            
-            // Make sure count is visible and properly styled
-            if (totalItems > 0) {
-                count.style.display = 'flex';
-                count.style.transform = 'scale(1.2)';
-                setTimeout(() => {
-                    count.style.transform = 'scale(1)';
-                }, 300);
-            } else {
-                count.style.display = 'none';
-            }
-            
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            total.textContent = `₹${totalPrice}`;
-            
-            items.innerHTML = '';
-            if (cart.length === 0) {
-                items.innerHTML = '<p style="text-align:center; padding:2rem;">Your cart is empty</p>';
-                return;
-            }
-            
-            cart.forEach(item => {
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">₹${item.price}</div>
-                        <div class="quantity-controls">
-                            <button class="qty-btn decrease" data-id="${item.id}">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <span>${item.quantity}</span>
-                            <button class="qty-btn increase" data-id="${item.id}">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <i class="fas fa-trash remove-item" data-id="${item.id}"></i>
-                `;
-                items.appendChild(cartItem);
-            });
-            
-            // Quantity controls
-            document.querySelectorAll('.increase').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const id = parseInt(btn.dataset.id);
-                    const item = cart.find(i => i.id === id);
-                    if (item) {
-                        item.quantity++;
-                        updateCart();
-                    }
-                });
-            });
-            
-            document.querySelectorAll('.decrease').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const id = parseInt(btn.dataset.id);
-                    const item = cart.find(i => i.id === id);
-                    if (item && item.quantity > 1) {
-                        item.quantity--;
-                        updateCart();
-                    }
-                });
-            });
-            
-            document.querySelectorAll('.remove-item').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const id = parseInt(btn.dataset.id);
-                    cart = cart.filter(i => i.id !== id);
-                    updateCart();
-                });
-            });
         }
 
         // Open checkout modal
