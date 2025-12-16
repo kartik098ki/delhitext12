@@ -1509,20 +1509,6 @@
     </style>
 </head>
 <body>
-    <!-- Policy Modal -->
-    <div class="modal-overlay" id="policyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="policyTitle">Policy</h3>
-                <button class="modal-close" onclick="closePolicy()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body" id="policyContent" style="max-height:70vh; overflow-y:auto;">
-            </div>
-        </div>
-    </div>
-
     <!-- Header -->
     <header class="header">
         <div class="header-content">
@@ -1900,9 +1886,9 @@
                 <div class="col-md-4">
                     <h5 class="footer-title">Quick Links</h5>
                     <ul class="footer-links">
-                        <li><a href="#" onclick="openPolicy('terms')">Terms & Conditions</a></li>
-                        <li><a href="#" onclick="openPolicy('privacy')">Privacy Policy</a></li>
-                        <li><a href="#" onclick="openPolicy('shipping')">Shipping, Returns & Refunds</a></li>
+                        <li><a href="/terms.html">Terms & Conditions</a></li>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/shipping-returns-refund.html">Shipping, Returns & Refund Policy</a></li>
                     </ul>
                 </div>
 
@@ -2871,49 +2857,6 @@
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
-        }
-
-        // Policy modal functions
-        function openPolicy(type) {
-            const modal = document.getElementById('policyModal');
-            const title = document.getElementById('policyTitle');
-            const content = document.getElementById('policyContent');
-
-            if (type === 'terms') {
-                title.innerText = 'Terms & Conditions';
-                content.innerHTML = `
-                <p>By using RailQuick, you agree to comply with all applicable laws and these terms.</p>
-                <p>All content on this website is owned by RailQuick and may not be reused without permission.</p>
-                <p>The service is provided "as is" without warranties of any kind.</p>
-                <p>RailQuick shall not be liable for delays caused by railways, vendors, or unforeseen events.</p>
-                `;
-            }
-
-            if (type === 'privacy') {
-                title.innerText = 'Privacy Policy';
-                content.innerHTML = `
-                <p>We collect basic personal details such as name, phone number, and order information.</p>
-                <p>Your data is used only to process orders and improve services.</p>
-                <p>We do not sell or share your personal data with third parties.</p>
-                <p>By using RailQuick, you consent to this policy.</p>
-                `;
-            }
-
-            if (type === 'shipping') {
-                title.innerText = 'Shipping, Returns & Refund Policy';
-                content.innerHTML = `
-                <p><strong>Delivery:</strong> Orders are delivered at the next available station.</p>
-                <p><strong>Returns:</strong> Food items are non-returnable unless damaged.</p>
-                <p><strong>Refunds:</strong> Approved refunds are processed within 5–7 business days.</p>
-                <p>Shipping charges are non-refundable.</p>
-                `;
-            }
-
-            modal.classList.add('active');
-        }
-
-        function closePolicy() {
-            document.getElementById('policyModal').classList.remove('active');
         }
     </script>
 </body>
