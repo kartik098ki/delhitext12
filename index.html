@@ -11,17 +11,17 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
         :root {
-            /* Enhanced color theme */
-            --primary: #6366F1;
-            --primary-dark: #4F46E5;
-            --primary-light: #818CF8;
-            --secondary: #06B6D4;
-            --accent: #10B981;
-            --success: #10B981;
-            --success-light: #34D399;
-            --warning: #F59E0B;
-            --danger: #EF4444;
-            --dark: #1E293B;
+            /* Modern color palette inspired by Zepto/Blinkit */
+            --primary: #6C63FF;
+            --primary-dark: #5A52E0;
+            --primary-light: #8B85FF;
+            --secondary: #FF6B6B;
+            --accent: #4ECDC4;
+            --success: #06D6A0;
+            --success-light: #4DD0A8;
+            --warning: #FFD166;
+            --info: #118AB2;
+            --dark: #1A1A2E;
             --light: #FFFFFF;
             --gray-50: #F8FAFC;
             --gray-100: #F1F5F9;
@@ -53,7 +53,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+            background-color: #F8FAFC;
             color: var(--dark);
             overflow-x: hidden;
             padding-bottom: 0;
@@ -71,9 +71,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(108, 99, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
         }
@@ -82,16 +82,30 @@
             flex: 1;
         }
 
+        /* Test Phase Banner */
+        .test-banner {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .test-banner i {
+            margin-right: 8px;
+        }
+
         /* Header - Desktop */
         .header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
         }
 
         .header-content {
@@ -104,9 +118,6 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -120,33 +131,15 @@
             transform: scale(1.05);
         }
 
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            transition: var(--transition);
         }
 
-        .logo:hover::after {
-            width: 100%;
-        }
-
-        .logo i {
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
+        .logo:hover .logo-img {
+            filter: drop-shadow(0 4px 8px rgba(108, 99, 255, 0.3));
         }
 
         .search-container {
@@ -158,7 +151,7 @@
 
         .search-input {
             width: 100%;
-            padding: 14px 50px 14px 20px;
+            padding: 12px 50px 12px 20px;
             border: 2px solid var(--gray-200);
             border-radius: 50px;
             font-size: 0.95rem;
@@ -170,7 +163,7 @@
             outline: none;
             border-color: var(--primary);
             background: var(--light);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
         }
 
         .search-btn {
@@ -178,7 +171,7 @@
             right: 8px;
             top: 50%;
             transform: translateY(-50%);
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border: none;
             border-radius: 50%;
             width: 38px;
@@ -193,7 +186,7 @@
 
         .search-btn:hover {
             transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
         }
 
         .header-actions {
@@ -219,45 +212,22 @@
 
         .header-action-btn:hover {
             color: var(--primary);
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(108, 99, 255, 0.1);
             border-color: var(--primary);
             transform: scale(1.05);
-        }
-
-        .notification-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            background: var(--danger);
-            color: white;
-            font-size: 0.65rem;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s infinite;
-            font-weight: 600;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
 
         /* Mobile Header */
         .mobile-header {
             display: none;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
         }
 
         .mobile-header-content {
@@ -268,9 +238,6 @@
         }
 
         .mobile-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -278,12 +245,10 @@
             text-decoration: none;
         }
 
-        .mobile-logo i {
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .mobile-logo-img {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
         }
 
         .mobile-actions {
@@ -309,7 +274,7 @@
 
         .mobile-action-btn:hover {
             color: var(--primary);
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(108, 99, 255, 0.1);
             border-color: var(--primary);
             transform: scale(1.05);
         }
@@ -317,10 +282,13 @@
         /* Mobile Search Section */
         .mobile-search-section {
             display: none;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             padding: 15px;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 62px;
+            z-index: 999;
         }
 
         .mobile-search-container {
@@ -330,7 +298,7 @@
 
         .mobile-search-input {
             width: 100%;
-            padding: 15px 50px 15px 20px;
+            padding: 12px 50px 12px 20px;
             border: 2px solid var(--gray-200);
             border-radius: 15px;
             font-size: 1rem;
@@ -342,7 +310,7 @@
             outline: none;
             border-color: var(--primary);
             background: var(--light);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
         }
 
         .mobile-search-btn {
@@ -350,7 +318,7 @@
             right: 8px;
             top: 50%;
             transform: translateY(-50%);
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border: none;
             border-radius: 50%;
             width: 36px;
@@ -365,7 +333,46 @@
 
         .mobile-search-btn:hover {
             transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
+        }
+
+        /* Search Results Section */
+        .search-results-section {
+            display: none;
+            margin: 30px 0;
+        }
+
+        .search-results-section.active {
+            display: block;
+        }
+
+        .search-results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .search-results-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .clear-search-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .clear-search-btn:hover {
+            color: var(--primary-dark);
         }
 
         /* Search Suggestions */
@@ -545,12 +552,12 @@
             transition: var(--transition);
             padding: 8px 16px;
             border-radius: 20px;
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(108, 99, 255, 0.1);
         }
 
         .see-all:hover {
             transform: translateX(5px);
-            background: rgba(99, 102, 241, 0.15);
+            background: rgba(108, 99, 255, 0.15);
         }
 
         .offers-grid {
@@ -598,7 +605,7 @@
             width: 70px;
             height: 70px;
             margin: 0 auto 15px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -611,7 +618,7 @@
 
         .offer-card:hover .offer-icon {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
         }
 
         .offer-title {
@@ -656,7 +663,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(6, 182, 212, 0.05));
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), rgba(255, 107, 107, 0.05));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -688,10 +695,10 @@
         }
 
         .category-card:hover .category-icon {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
         }
 
         .category-name {
@@ -708,6 +715,90 @@
             margin-top: 5px;
             position: relative;
             z-index: 1;
+        }
+
+        /* Category Modal */
+        .category-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .category-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .category-modal-content {
+            background: var(--light);
+            border-radius: 25px;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .category-modal.active .category-modal-content {
+            transform: scale(1);
+        }
+
+        .category-modal-header {
+            padding: 25px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 25px 25px 0 0;
+            position: relative;
+        }
+
+        .category-modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .category-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .category-modal-body {
+            padding: 25px;
+        }
+
+        .category-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
         }
 
         /* Products */
@@ -824,7 +915,7 @@
             color: var(--gray-600);
         }
 
-        /* Product Quantity Controls */
+        /* Product Quantity Controls - Simplified */
         .product-quantity {
             display: flex;
             align-items: center;
@@ -835,9 +926,9 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            border: 1px solid var(--gray-300);
-            background: var(--light);
-            color: var(--gray-600);
+            border: none;
+            background: var(--primary);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -847,9 +938,7 @@
         }
 
         .qty-btn:hover {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-color: var(--primary);
+            background: var(--primary-dark);
             transform: scale(1.1);
         }
 
@@ -858,6 +947,205 @@
             text-align: center;
             font-weight: 600;
             font-size: 0.95rem;
+        }
+
+        /* How It Works Section - Zepto/Blinkit Style */
+        .how-it-works-section {
+            margin: 60px 0;
+            padding: 50px 0;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), rgba(255, 107, 107, 0.05));
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .how-it-works-container {
+            position: relative;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 22%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border: 4px solid white;
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-align: center;
+            color: var(--dark);
+        }
+
+        .step-desc {
+            text-align: center;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        /* Brands Section - Zepto/Blinkit Style */
+        .brands-section {
+            margin: 60px 0;
+        }
+
+        .brands-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .brand-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 20px;
+            width: 160px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .brand-logo {
+            max-width: 100%;
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        /* Features Section - Enhanced */
+        .features-section {
+            margin: 60px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+        }
+
+        .feature-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-desc {
+            color: var(--gray-600);
+            line-height: 1.6;
         }
 
         /* Cart */
@@ -872,7 +1160,7 @@
             width: 65px;
             height: 65px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border: none;
             color: white;
             font-size: 1.4rem;
@@ -908,15 +1196,15 @@
 
         .cart-fab:hover {
             transform: scale(1.1);
-            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 15px 35px rgba(108, 99, 255, 0.4);
         }
 
         .cart-count {
             position: absolute;
             top: -8px;
             right: -8px;
-            background: var(--warning);
-            color: var(--dark);
+            background: var(--info);
+            color: white;
             width: 30px;
             height: 30px;
             border-radius: 50%;
@@ -931,6 +1219,12 @@
             border: 3px solid var(--light);
             z-index: 10;
             animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(17, 138, 178, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(17, 138, 178, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(17, 138, 178, 0); }
         }
 
         /* Cart Sidebar */
@@ -954,7 +1248,7 @@
 
         .cart-header {
             padding: 25px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             color: white;
             display: flex;
             justify-content: space-between;
@@ -1045,7 +1339,7 @@
         }
 
         .remove-item:hover {
-            color: var(--danger);
+            color: var(--info);
             transform: scale(1.2);
         }
 
@@ -1067,7 +1361,7 @@
         .checkout-btn {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             border: none;
             border-radius: 50px;
             color: white;
@@ -1080,6 +1374,84 @@
         .checkout-btn:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-xl);
+        }
+
+        /* Notification Dropdown */
+        .notification-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 320px;
+            background: var(--light);
+            border-radius: 15px;
+            box-shadow: var(--shadow-xl);
+            margin-top: 10px;
+            z-index: 1000;
+            display: none;
+            overflow: hidden;
+        }
+
+        .notification-dropdown.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .notification-header {
+            padding: 15px 20px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mark-all-read {
+            font-size: 0.85rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .mark-all-read:hover {
+            opacity: 1;
+        }
+
+        .notification-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .notification-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--gray-100);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .notification-item:hover {
+            background: var(--gray-50);
+        }
+
+        .notification-item.unread {
+            background: rgba(108, 99, 255, 0.05);
+            border-left: 3px solid var(--primary);
+        }
+
+        .notification-content {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .notification-time {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        .notification-empty {
+            padding: 30px;
+            text-align: center;
+            color: var(--gray-500);
         }
 
         /* Modals */
@@ -1123,7 +1495,7 @@
 
         .modal-header {
             padding: 25px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             color: white;
             border-radius: 25px 25px 0 0;
             position: relative;
@@ -1195,15 +1567,15 @@
             outline: none;
             border-color: var(--primary);
             background: var(--light);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
         }
 
         .form-input.error {
-            border-color: var(--danger);
+            border-color: var(--info);
         }
 
         .error-message {
-            color: var(--danger);
+            color: var(--info);
             font-size: 0.85rem;
             margin-top: 8px;
             display: none;
@@ -1285,7 +1657,7 @@
 
         .payment-option input[type="radio"]:checked + .payment-card {
             border-color: var(--primary);
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(108, 99, 255, 0.1);
         }
 
         .payment-option input[type="radio"]:checked + .payment-card i {
@@ -1299,7 +1671,7 @@
         .place-order-btn {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             border: none;
             border-radius: 50px;
             color: white;
@@ -1340,60 +1712,174 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Success Page */
-        .success-container {
+        /* Success Modal */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            padding: 30px;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .success-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-content {
+            background: var(--light);
+            border-radius: 25px;
+            width: 90%;
+            max-width: 550px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-xl);
+            padding: 0;
+        }
+
+        .success-modal.active .success-content {
+            transform: scale(1);
+        }
+
+        .success-header {
+            padding: 25px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 25px 25px 0 0;
+            position: relative;
             text-align: center;
-            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
         }
 
         .success-icon {
-            font-size: 5rem;
-            color: var(--success);
-            margin-bottom: 30px;
-            animation: bounce 1s ease infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            font-size: 4rem;
+            margin-bottom: 15px;
         }
 
         .success-title {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .success-body {
+            padding: 30px 25px;
+        }
+
+        .success-message {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .success-message h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 15px;
             color: var(--dark);
         }
 
-        .success-message {
-            font-size: 1.1rem;
+        .success-message p {
+            font-size: 1rem;
             color: var(--gray-600);
-            margin-bottom: 40px;
-            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .feedback-form {
+            background: var(--gray-50);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feedback-form h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .rating-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .rating-star-btn {
+            font-size: 1.5rem;
+            color: var(--gray-300);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .rating-star-btn:hover {
+            color: var(--warning);
+            transform: scale(1.1);
+        }
+
+        .rating-star-btn.active {
+            color: var(--warning);
+        }
+
+        .feedback-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--light);
+            min-height: 120px;
+            resize: vertical;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .feedback-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--light);
+            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
+        }
+
+        .submit-feedback-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, var(--success), var(--success-light));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 20px;
+        }
+
+        .submit-feedback-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
         }
 
         .success-details {
-            background: var(--light);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: var(--shadow-xl);
-            margin-bottom: 40px;
-            width: 100%;
-            max-width: 550px;
-            text-align: left;
+            background: var(--gray-50);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
         }
 
         .detail-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
             border-bottom: 1px solid var(--gray-200);
         }
 
@@ -1413,16 +1899,25 @@
             color: var(--dark);
         }
 
-        .back-home-btn {
-            padding: 18px 40px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border: none;
+        .success-footer {
+            display: flex;
+            gap: 15px;
+        }
+
+        .success-footer button {
+            flex: 1;
+            padding: 15px;
             border-radius: 50px;
-            color: white;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
+            border: none;
+        }
+
+        .back-home-btn {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: white;
         }
 
         .back-home-btn:hover {
@@ -1430,41 +1925,9 @@
             box-shadow: var(--shadow-xl);
         }
 
-        /* Toast */
-        .toast {
-            position: fixed;
-            top: 25px;
-            right: 25px;
-            background: var(--dark);
-            color: white;
-            padding: 18px 25px;
-            border-radius: 15px;
-            box-shadow: var(--shadow-xl);
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-            z-index: 3000;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            max-width: 350px;
-        }
-
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        .toast-icon {
-            font-size: 1.3rem;
-            color: var(--success);
-        }
-
-        .toast-message {
-            font-weight: 600;
-        }
-
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, #1E293B, #0F172A);
+            background: linear-gradient(135deg, #1A1A2E, #0F172A);
             color: var(--gray-300);
             padding: 70px 0 40px;
             position: relative;
@@ -1488,7 +1951,7 @@
             left: 0;
             width: 100%;
             height: 80px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231E293B' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231A1A2E' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
             background-size: cover;
         }
 
@@ -1718,7 +2181,11 @@
                 font-size: 1.1rem;
             }
 
+            /* Mobile Product Quantity Controls - Horizontal Layout */
             .product-quantity {
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 gap: 5px;
             }
 
@@ -1794,49 +2261,65 @@
                 gap: 0;
             }
 
-            .payment-options {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .payment-card {
-                padding: 15px;
-                flex-direction: row;
-                justify-content: flex-start;
-                gap: 12px;
-            }
-
-            .payment-card i {
-                font-size: 1.4rem;
-                margin-bottom: 0;
-            }
-
             .place-order-btn {
                 padding: 15px;
                 font-size: 1rem;
             }
 
-            .success-container {
+            .success-content {
+                width: 95%;
+                border-radius: 20px;
+            }
+
+            .success-header {
                 padding: 20px;
+                border-radius: 20px 20px 0 0;
+            }
+
+            .success-icon {
+                font-size: 3rem;
             }
 
             .success-title {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
-            .success-message {
-                font-size: 1rem;
-                margin-bottom: 30px;
+            .success-body {
+                padding: 20px;
+            }
+
+            .success-message h3 {
+                font-size: 1.3rem;
+            }
+
+            .success-message p {
+                font-size: 0.95rem;
+            }
+
+            .feedback-form {
+                padding: 15px;
+            }
+
+            .feedback-form h3 {
+                font-size: 1.2rem;
+            }
+
+            .rating-star-btn {
+                font-size: 1.3rem;
+            }
+
+            .submit-feedback-btn {
+                padding: 12px;
+                font-size: 0.95rem;
             }
 
             .success-details {
-                padding: 25px;
-                margin-bottom: 30px;
+                padding: 15px;
             }
 
             .detail-row {
-                margin-bottom: 15px;
-                padding-bottom: 15px;
+                margin-bottom: 12px;
+                padding-bottom: 12px;
             }
 
             .detail-label {
@@ -1844,27 +2327,6 @@
             }
 
             .detail-value {
-                font-size: 0.9rem;
-            }
-
-            .back-home-btn {
-                padding: 15px 30px;
-                font-size: 1rem;
-            }
-
-            .toast {
-                top: 15px;
-                right: 15px;
-                left: 15px;
-                padding: 15px 20px;
-                border-radius: 12px;
-            }
-
-            .toast-icon {
-                font-size: 1.1rem;
-            }
-
-            .toast-message {
                 font-size: 0.9rem;
             }
 
@@ -1913,6 +2375,37 @@
                 padding-top: 20px;
                 font-size: 0.85rem;
             }
+
+            .notification-dropdown {
+                width: 280px;
+                right: -10px;
+            }
+
+            /* How It Works Section - Mobile */
+            .steps-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+
+            .step {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            /* Brands Section - Mobile */
+            .brands-container {
+                gap: 15px;
+            }
+
+            .brand-card {
+                width: 140px;
+                height: 80px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1921,9 +2414,11 @@
                 gap: 15px;
             }
 
+            /* Ensure horizontal layout for quantity controls on small screens */
             .product-quantity {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
+                justify-content: center;
                 gap: 5px;
             }
 
@@ -1935,16 +2430,25 @@
             .qty-value {
                 font-size: 0.85rem;
             }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Test Phase Banner -->
+    <div class="test-banner">
+        <i class="fas fa-flask"></i>
+        This is a Test Phase - We're launching super soon!
+    </div>
+
     <!-- Desktop Header -->
     <header class="header">
         <div class="header-content">
             <a href="#" class="logo" onclick="goToHome(event)">
-                <i class="fas fa-train"></i>
-                RailQuick
+                <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="RailQuick" class="logo-img">
             </a>
             <div class="search-container">
                 <input type="text" class="search-input" id="searchInput" placeholder="Search for food, drinks, snacks...">
@@ -1956,8 +2460,28 @@
             <div class="header-actions">
                 <button class="header-action-btn" id="notificationBtn">
                     <i class="fas fa-bell"></i>
-                    <span class="notification-badge" id="notificationBadge">2</span>
                 </button>
+                <!-- Notification Dropdown -->
+                <div class="notification-dropdown" id="notificationDropdown">
+                    <div class="notification-header">
+                        <span>Notifications</span>
+                        <span class="mark-all-read" id="markAllRead">Mark all as read</span>
+                    </div>
+                    <div class="notification-list" id="notificationList">
+                        <div class="notification-item unread">
+                            <div class="notification-content">Your order #RQ123456 has been confirmed!</div>
+                            <div class="notification-time">2 minutes ago</div>
+                        </div>
+                        <div class="notification-item unread">
+                            <div class="notification-content">New offer: Get 20% off on all meals today!</div>
+                            <div class="notification-time">1 hour ago</div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-content">Your feedback helps us improve our service</div>
+                            <div class="notification-time">Yesterday</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -1966,20 +2490,39 @@
     <header class="mobile-header">
         <div class="mobile-header-content">
             <a href="#" class="mobile-logo" onclick="goToHome(event)">
-                <i class="fas fa-train"></i>
-                RailQuick
+                <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="RailQuick" class="mobile-logo-img">
             </a>
             <div class="mobile-actions">
                 <button class="mobile-action-btn" id="mobileNotificationBtn">
                     <i class="fas fa-bell"></i>
-                    <span class="notification-badge" id="mobileNotificationBadge">2</span>
                 </button>
+                <!-- Mobile Notification Dropdown -->
+                <div class="notification-dropdown" id="mobileNotificationDropdown">
+                    <div class="notification-header">
+                        <span>Notifications</span>
+                        <span class="mark-all-read" id="mobileMarkAllRead">Mark all as read</span>
+                    </div>
+                    <div class="notification-list" id="mobileNotificationList">
+                        <div class="notification-item unread">
+                            <div class="notification-content">Your order #RQ123456 has been confirmed!</div>
+                            <div class="notification-time">2 minutes ago</div>
+                        </div>
+                        <div class="notification-item unread">
+                            <div class="notification-content">New offer: Get 20% off on all meals today!</div>
+                            <div class="notification-time">1 hour ago</div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-content">Your feedback helps us improve our service</div>
+                            <div class="notification-time">Yesterday</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Mobile Search Section -->
-    <section class="mobile-search-section">
+    <section class="mobile-search-section" id="mobileSearchSection">
         <div class="mobile-search-container">
             <input type="text" class="mobile-search-input" id="mobileSearchInput" placeholder="Search for food, drinks, snacks...">
             <div class="search-suggestions" id="mobileSearchSuggestions"></div>
@@ -1992,13 +2535,27 @@
     <!-- Main Content -->
     <main class="container">
         <!-- Hero Section -->
-        <section class="hero-section">
+        <section class="hero-section" id="heroSection">
             <div class="hero-card">
                 <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" class="hero-image">
                 <div class="hero-content">
                     <h2 class="hero-title">₹0 Delivery Fee</h2>
                     <p class="hero-subtitle">On all orders above ₹199</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- Search Results Section -->
+        <section class="search-results-section" id="searchResultsSection">
+            <div class="search-results-header">
+                <h2 class="search-results-title">Search Results</h2>
+                <button class="clear-search-btn" id="clearSearchBtn">
+                    <i class="fas fa-times"></i>
+                    Clear Search
+                </button>
+            </div>
+            <div class="products-grid" id="searchResultsGrid">
+                <!-- Search results will be loaded here -->
             </div>
         </section>
 
@@ -2047,26 +2604,19 @@
                 <span class="see-all">See all <i class="fas fa-chevron-right"></i></span>
             </div>
             <div class="categories-grid">
-                <div class="category-card" data-category="vegetables">
+                <div class="category-card" data-category="essentials">
                     <div class="category-icon">
-                        <i class="fas fa-carrot"></i>
+                        <i class="fas fa-shopping-basket"></i>
                     </div>
-                    <div class="category-name">Vegetables</div>
+                    <div class="category-name">Essentials</div>
                     <div class="category-count">25 items</div>
                 </div>
-                <div class="category-card" data-category="fruits">
+                <div class="category-card" data-category="travel">
                     <div class="category-icon">
-                        <i class="fas fa-apple-alt"></i>
+                        <i class="fas fa-suitcase"></i>
                     </div>
-                    <div class="category-name">Fruits</div>
+                    <div class="category-name">Travel</div>
                     <div class="category-count">18 items</div>
-                </div>
-                <div class="category-card" data-category="dairy">
-                    <div class="category-icon">
-                        <i class="fas fa-cheese"></i>
-                    </div>
-                    <div class="category-name">Dairy</div>
-                    <div class="category-count">12 items</div>
                 </div>
                 <div class="category-card" data-category="snacks">
                     <div class="category-icon">
@@ -2075,13 +2625,6 @@
                     <div class="category-name">Snacks</div>
                     <div class="category-count">32 items</div>
                 </div>
-                <div class="category-card" data-category="beverages">
-                    <div class="category-icon">
-                        <i class="fas fa-glass-water"></i>
-                    </div>
-                    <div class="category-name">Beverages</div>
-                    <div class="category-count">20 items</div>
-                </div>
                 <div class="category-card" data-category="meals">
                     <div class="category-icon">
                         <i class="fas fa-utensils"></i>
@@ -2089,34 +2632,178 @@
                     <div class="category-name">Meals</div>
                     <div class="category-count">15 items</div>
                 </div>
-                <div class="category-card" data-category="desserts">
-                    <div class="category-icon">
-                        <i class="fas fa-ice-cream"></i>
-                    </div>
-                    <div class="category-name">Desserts</div>
-                    <div class="category-count">10 items</div>
-                </div>
-                <div class="category-card" data-category="breakfast">
-                    <div class="category-icon">
-                        <i class="fas fa-egg"></i>
-                    </div>
-                    <div class="category-name">Breakfast</div>
-                    <div class="category-count">8 items</div>
-                </div>
             </div>
         </section>
 
-        <!-- Products -->
-        <section class="products-section">
-            <div class="section-title">
+        <!-- Products Section - Default shows Popular Items -->
+        <section class="products-section" id="productsSection">
+            <div class="section-title" id="productsSectionTitle">
                 Popular Items
-                <span class="see-all">See all <i class="fas fa-chevron-right"></i></span>
+                <span class="see-all" id="seeAllBtn">See all <i class="fas fa-chevron-right"></i></span>
             </div>
             <div class="products-grid" id="productGrid">
                 <!-- Products will be loaded here -->
             </div>
         </section>
+
+        <!-- How It Works Section - Zepto/Blinkit Style -->
+        <section class="how-it-works-section">
+            <div class="section-title">
+                How RailQuick Works
+            </div>
+            <div class="how-it-works-container">
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="step-title">Browse & Select</h3>
+                        <p class="step-desc">Choose from a wide range of food, snacks, and travel essentials available at upcoming stations</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-train"></i>
+                        </div>
+                        <h3 class="step-title">Enter Train Details</h3>
+                        <p class="step-desc">Provide your train number, seat/coach details for precise delivery to your seat</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3 class="step-title">Pay Securely</h3>
+                        <p class="step-desc">Complete your payment using our secure payment options or choose cash on delivery</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h3 class="step-title">Get Delivery</h3>
+                        <p class="step-desc">Receive your order at the next station without any hassle</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brands Section - Zepto/Blinkit Style -->
+        <section class="brands-section">
+            <div class="section-title">
+                Popular Brands Available
+            </div>
+            <div class="brands-container">
+                <div class="brand-card">
+                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
+                </div>
+                <div class="brand-card">
+                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
+                </div>
+                <div class="brand-card">
+                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
+                </div>
+                <div class="brand-card">
+                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
+                </div>
+                <div class="brand-card">
+                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
+                </div>
+                <div class="brand-card">
+                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
+                </div>
+                <div class="brand-card">
+                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
+                </div>
+                <div class="brand-card">
+                    <img src="https://i.ibb.co/L5YJ3Jz/railquick-logo.png" alt="Brand" class="brand-logo">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section - Enhanced -->
+        <section class="features-section">
+            <div class="section-title">
+                Why Choose RailQuick?
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">Fast Delivery</h3>
+                    <p class="feature-desc">Get your food and essentials delivered at the next station, no long waits!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Live Tracking</h3>
+                    <p class="feature-desc">Track your order in real-time as it approaches your train.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Secure Payment</h3>
+                    <p class="feature-desc">Multiple payment options with secure transactions for your peace of mind.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="feature-desc">Our customer support team is always ready to help you with your queries.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="feature-title">Local Specialties</h3>
+                    <p class="feature-desc">Enjoy regional delicacies from different stations during your journey.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">Hygienic Packaging</h3>
+                    <p class="feature-desc">All food is prepared in hygienic conditions and packed safely for travel.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3 class="feature-title">Best Prices</h3>
+                    <p class="feature-desc">Get the best deals and offers on food and travel essentials.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3 class="feature-title">Travel Essentials</h3>
+                    <p class="feature-desc">From chargers to pillows, get all your travel needs delivered to your seat.</p>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Category Modal -->
+    <div class="category-modal" id="categoryModal">
+        <div class="category-modal-content">
+            <div class="category-modal-header">
+                <h2 class="category-modal-title" id="categoryModalTitle">Category Products</h2>
+                <button class="category-modal-close" id="categoryModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="category-modal-body">
+                <div class="category-products-grid" id="categoryProductsGrid">
+                    <!-- Category products will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Cart FAB -->
     <div class="cart-container">
@@ -2189,14 +2876,7 @@
                         <div class="form-label">Payment Method</div>
                         <div class="payment-options">
                             <label class="payment-option">
-                                <input type="radio" name="paymentMethod" value="online" checked>
-                                <div class="payment-card">
-                                    <i class="fas fa-credit-card"></i>
-                                    <span>Online Payment</span>
-                                </div>
-                            </label>
-                            <label class="payment-option">
-                                <input type="radio" name="paymentMethod" value="cod">
+                                <input type="radio" name="paymentMethod" value="cod" checked>
                                 <div class="payment-card">
                                     <i class="fas fa-money-bill-wave"></i>
                                     <span>Cash on Delivery</span>
@@ -2213,119 +2893,63 @@
         </div>
     </div>
 
-    <!-- Payment Modal -->
-    <div class="modal-overlay" id="paymentModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Complete Payment</h3>
-                <button class="modal-close" id="paymentModalClose">
-                    <i class="fas fa-times"></i>
-                </button>
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <div class="success-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1 class="success-title">Order Confirmed! 🎉</h1>
             </div>
-            <div class="modal-body">
-                <div class="payment-summary">
-                    <div class="summary-title">Payment Summary</div>
-                    <div id="paymentSummaryItems"></div>
-                    <div class="summary-total">
-                        <span>Total Amount:</span>
-                        <span id="paymentTotal">₹0</span>
+            <div class="success-body">
+                <div class="success-message">
+                    <h3>Thank you for your order!</h3>
+                    <p>This is a trial phase of RailQuick. We are launching super soon and will be able to actually deliver your orders then. Your order details have been recorded for our reference.</p>
+                </div>
+                
+                <div class="feedback-form">
+                    <h3>Help us improve!</h3>
+                    <p style="margin-bottom: 20px;">How would you rate your experience with our website?</p>
+                    <div class="rating-group">
+                        <i class="fas fa-star rating-star-btn" data-rating="1"></i>
+                        <i class="fas fa-star rating-star-btn" data-rating="2"></i>
+                        <i class="fas fa-star rating-star-btn" data-rating="3"></i>
+                        <i class="fas fa-star rating-star-btn" data-rating="4"></i>
+                        <i class="fas fa-star rating-star-btn" data-rating="5"></i>
+                    </div>
+                    <textarea class="feedback-textarea" placeholder="Share your thoughts and suggestions..."></textarea>
+                    <button class="submit-feedback-btn" id="submitFeedbackBtn">Submit Feedback</button>
+                </div>
+                
+                <div class="success-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Order ID</span>
+                        <span class="detail-value" id="orderId">#000000</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Name</span>
+                        <span class="detail-value" id="customerNameDisplay">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Train</span>
+                        <span class="detail-value" id="trainNumberDisplay">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Seat/Coach</span>
+                        <span class="detail-value" id="seatNumberDisplay">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Total Amount</span>
+                        <span class="detail-value" id="totalAmountDisplay">₹0</span>
                     </div>
                 </div>
-                <div class="payment-form">
-                    <div class="form-group">
-                        <label class="form-label">Card Number</label>
-                        <input type="text" class="form-input" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
-                        <span class="error-message">Please enter a valid card number</span>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group half">
-                            <label class="form-label">Expiry Date</label>
-                            <input type="text" class="form-input" id="expiryDate" placeholder="MM/YY" maxlength="5">
-                            <span class="error-message">Please enter a valid expiry date</span>
-                        </div>
-                        <div class="form-group half">
-                            <label class="form-label">CVV</label>
-                            <input type="text" class="form-input" id="cvv" placeholder="123" maxlength="3">
-                            <span class="error-message">Please enter a valid CVV</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Cardholder Name</label>
-                        <input type="text" class="form-input" id="cardholderName" placeholder="John Doe">
-                        <span class="error-message">Please enter cardholder name</span>
-                    </div>
-                </div>
-                <button class="place-order-btn" id="processPaymentBtn">
-                    <span class="spinner"></span>
-                    <span class="btn-text">Process Payment</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Notifications Modal -->
-    <div class="modal-overlay" id="notificationsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Notifications</h3>
-                <button class="modal-close" id="notificationsModalClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="notificationsList">
-                    <!-- Notifications will be loaded here -->
+                
+                <div class="success-footer">
+                    <button class="back-home-btn" id="backHomeBtn">Back to Home</button>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Success Page -->
-    <div class="success-container" id="successPage" style="display: none;">
-        <div class="success-icon">
-            <i class="fas fa-check-circle"></i>
-        </div>
-        <h1 class="success-title">Order Confirmed! 🎉</h1>
-        <p class="success-message">Your food will be delivered at next station. Get ready for a delicious meal!</p>
-        
-        <div class="success-details">
-            <div class="detail-row">
-                <span class="detail-label">Order ID</span>
-                <span class="detail-value" id="orderId">#000000</span>
-            </div>
-            <div class="detail-row">
-                <span class="detail-label">Name</span>
-                <span class="detail-value" id="customerNameDisplay">-</span>
-            </div>
-            <div class="detail-row">
-                <span class="detail-label">Train</span>
-                <span class="detail-value" id="trainNumberDisplay">-</span>
-            </div>
-            <div class="detail-row">
-                <span class="detail-label">Seat/Coach</span>
-                <span class="detail-value" id="seatNumberDisplay">-</span>
-            </div>
-            <div class="detail-row">
-                <span class="detail-label">Payment Method</span>
-                <span class="detail-value" id="paymentMethodDisplay">-</span>
-            </div>
-            <div class="detail-row">
-                <span class="detail-label">Total Amount</span>
-                <span class="detail-value" id="totalAmountDisplay">₹0</span>
-            </div>
-            <div class="detail-row">
-                <span class="detail-label">Estimated Delivery</span>
-                <span class="detail-value" id="deliveryTimeDisplay">-</span>
-            </div>
-        </div>
-        
-        <button class="back-home-btn" id="backHomeBtn">Back to Home</button>
-    </div>
-
-    <!-- Toast -->
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle toast-icon"></i>
-        <span class="toast-message"></span>
     </div>
 
     <!-- Footer -->
@@ -2362,7 +2986,7 @@
                     <h5 class="footer-title">Contact</h5>
                     <div class="footer-contact">
                         <i class="fas fa-envelope"></i>
-                        <span>kartikguleria12@gmail.com</span>
+                        <span>support@railquick.com</span>
                     </div>
                     <div class="footer-contact">
                         <i class="fas fa-phone"></i>
@@ -2370,7 +2994,7 @@
                     </div>
                     <div class="footer-contact">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Delhi, India</span>
+                        <span>Mumbai, India</span>
                     </div>
                 </div>
             </div>
@@ -2384,14 +3008,14 @@
     </footer>
 
     <script>
-        // Products data
+        // Products data - expanded with more items
         const products = [
             {
                 id: 1,
-                name: "Kurkura",
-                weight: "1 piece",
+                name: "Kurkure",
+                weight: "1 pack (60g)",
                 price: 20,
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTChrMS5X1bdGwUyXZxIWWYuH3tQGEnqDomWA&s",
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
                 category: "snacks",
                 badge: "Bestseller",
                 rating: 4.5,
@@ -2399,72 +3023,72 @@
             },
             {
                 id: 2,
-                name: "Lay's",
-                weight: "2 pieces",
-                price: 20,
-                image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/NI_CATALOG/IMAGES/CIW/2024/8/1/a19b918c-0bad-4c0f-b751-48a8393e4bb0_673_1.png",
-                category: "meals",
+                name: "Lay's Potato Chips",
+                weight: "2 packs (52g each)",
+                price: 40,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
                 rating: 4.3,
                 reviews: 89
             },
             {
                 id: 3,
-                name: "Uncle chipps",
-                weight: "1 plate",
+                name: "Uncle Chipps",
+                weight: "1 pack (55g)",
                 price: 20,
-                image: "https://www.bbassets.com/media/uploads/p/l/40015992_18-uncle-chips-uncle-chips-potato-chips-spicy-treat-flavour.jpg",
-                category: "meals",
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
                 badge: "Popular",
                 rating: 4.7,
                 reviews: 203
             },
             {
                 id: 4,
-                name: "Dairy milk silk choclate",
-                weight: "250g",
+                name: "Dairy Milk Silk Chocolate",
+                weight: "1 bar (60g)",
                 price: 100,
-                image: "https://www.bbassets.com/media/uploads/p/l/100265003_26-cadbury-dairy-milk-silk-fruit-nut-chocolate-bar.jpg",
-                category: "desserts",
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
                 rating: 4.2,
                 reviews: 56
             },
             {
                 id: 5,
-                name: "Cadbury Oreo Creme ",
-                weight: "1 piece",
+                name: "Cadbury Oreo Cream Biscuits",
+                weight: "1 pack (113g)",
                 price: 29,
-                image: "https://www.quickpantry.in/cdn/shop/files/CadburyOreoCremeBiscuits-Strawberry113.75g.webp?v=1733084643",
-                category: "snacks",
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
                 rating: 4.6,
                 reviews: 178
             },
             {
                 id: 6,
-                name: "Original 20W iPhone Charger",
-                weight: "500g",
+                name: "Travel Pillow",
+                weight: "1 piece",
                 price: 490,
-                image: "https://cdn.screenguards.co.in/media/catalog/product/cache/11/image/9df78eab33525d08d6e5fb8d27136e95/t/y/type-c_to_lightning_20w_pd.jpg",
-                category: "beverages",
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
                 rating: 4.1,
                 reviews: 92
             },
             {
                 id: 7,
-                name: "Nescafe Gold Premium Jar",
-                weight: "250ml",
-                price: 590,
-                image: "https://www.urbangroc.com/wp-content/uploads/2023/02/nescafe-gold-blend-thum.jpg",
-                category: "beverages",
+                name: "Nescafe Gold Premium Coffee",
+                weight: "1 jar (50g)",
+                price: 190,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
                 rating: 4.4,
                 reviews: 156
             },
             {
                 id: 8,
                 name: "Chocolate Dream Cake",
-                weight: "200g",
+                weight: "200g slice",
                 price: 120,
-                image: "https://www.thedessertsymphony.in/cdn/shop/files/1.jpg?v=1704731141&width=1946",
-                category: "desserts",
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
                 badge: "Must Try",
                 rating: 4.8,
                 reviews: 234
@@ -2472,102 +3096,498 @@
             {
                 id: 9,
                 name: "Bingo Mad Angles",
-                weight: "300ml",
+                weight: "1 pack (90g)",
                 price: 20,
-                image: "https://rukminim2.flixcart.com/image/480/480/kdrpksw0/chips/b/7/d/90-madangle-achari-bingo-original-imafuhf5yzz9nbar.jpeg?q=90",
-                category: "meals",
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
                 rating: 4.0,
                 reviews: 67
             },
             {
                 id: 10,
-                name: "Mad Angle Mystery Pickle ",
-                weight: "200g",
-                price: 20,
-                image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/NI_CATALOG/IMAGES/ciw/2025/6/27/8befa8ae-decf-4720-9445-1cb5b95f4bd5_NPI-005279_1_20250627_072042.png",
-                category: "vegetables",
+                name: "Travel Blanket",
+                weight: "1 piece",
+                price: 350,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
                 rating: 4.3,
                 reviews: 78
             },
             {
                 id: 11,
-                name: "Panda keychain",
+                name: "Eye Mask for Travel",
                 weight: "1 piece",
                 price: 130,
-                image: "https://wonderlandgarden.in/cdn/shop/files/614hjXxKYRL._SX679_679x679.jpg?v=1736242084",
-                category: "snacks",
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
                 rating: 4.5,
                 reviews: 145
             },
             {
                 id: 12,
-                name: "Parle Hide & Seek Biscui",
-                weight: "100g",
+                name: "Parle Hide & Seek Biscuits",
+                weight: "1 pack (100g)",
                 price: 30,
-                image: "https://indiashopping.io/cdn/shop/files/parle-cookies-100-gms-parle-hide-seek-biscuit-100-gms-44306576441632.png?v=1737805232",
-                category: "beverages",
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
                 rating: 4.2,
                 reviews: 103
+            },
+            {
+                id: 13,
+                name: "Mineral Water Bottle",
+                weight: "1 litre",
+                price: 20,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
+                rating: 4.1,
+                reviews: 87
+            },
+            {
+                id: 14,
+                name: "Fresh Fruit Juice",
+                weight: "500ml",
+                price: 40,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
+                rating: 4.3,
+                reviews: 112
+            },
+            {
+                id: 15,
+                name: "Travel Neck Pillow",
+                weight: "1 piece",
+                price: 250,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
+                rating: 4.4,
+                reviews: 98
+            },
+            {
+                id: 16,
+                name: "Sandwich Combo",
+                weight: "1 plate",
+                price: 120,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
+                badge: "Combo",
+                rating: 4.6,
+                reviews: 167
+            },
+            {
+                id: 17,
+                name: "Veg Pasta",
+                weight: "1 plate",
+                price: 150,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
+                rating: 4.2,
+                reviews: 134
+            },
+            {
+                id: 18,
+                name: "Travel Power Bank",
+                weight: "1 piece",
+                price: 550,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
+                rating: 4.5,
+                reviews: 189
+            },
+            {
+                id: 19,
+                name: "Chocolate Chip Cookies",
+                weight: "1 pack (200g)",
+                price: 45,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
+                rating: 4.7,
+                reviews: 156
+            },
+            {
+                id: 20,
+                name: "Masala Tea",
+                weight: "1 cup",
+                price: 15,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
+                rating: 4.0,
+                reviews: 98
+            },
+            // New products
+            {
+                id: 21,
+                name: "Pani Puri Kit",
+                weight: "1 pack (4 servings)",
+                price: 80,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
+                badge: "Regional Special",
+                rating: 4.6,
+                reviews: 178
+            },
+            {
+                id: 22,
+                name: "Chole Bhature",
+                weight: "1 plate",
+                price: 130,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
+                badge: "North Indian",
+                rating: 4.5,
+                reviews: 203
+            },
+            {
+                id: 23,
+                name: "Dosa with Sambar",
+                weight: "1 plate",
+                price: 110,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
+                badge: "South Indian",
+                rating: 4.4,
+                reviews: 189
+            },
+            {
+                id: 24,
+                name: "Rajma Chawal",
+                weight: "1 plate",
+                price: 140,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
+                badge: "North Indian",
+                rating: 4.3,
+                reviews: 167
+            },
+            {
+                id: 25,
+                name: "Veg Biryani",
+                weight: "1 plate",
+                price: 160,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
+                badge: "Popular",
+                rating: 4.7,
+                reviews: 245
+            },
+            {
+                id: 26,
+                name: "Paneer Butter Masala",
+                weight: "1 plate",
+                price: 180,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
+                badge: "Special",
+                rating: 4.6,
+                reviews: 212
+            },
+            {
+                id: 27,
+                name: "Egg Roll",
+                weight: "1 piece",
+                price: 70,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
+                badge: "Quick Bite",
+                rating: 4.2,
+                reviews: 134
+            },
+            {
+                id: 28,
+                name: "Veg Momos",
+                weight: "6 pieces",
+                price: 90,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "meals",
+                badge: "Himalayan",
+                rating: 4.5,
+                reviews: 178
+            },
+            {
+                id: 29,
+                name: "Samosa",
+                weight: "2 pieces",
+                price: 30,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
+                badge: "Classic",
+                rating: 4.4,
+                reviews: 223
+            },
+            {
+                id: 30,
+                name: "Vada Pav",
+                weight: "1 piece",
+                price: 25,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
+                badge: "Mumbai Special",
+                rating: 4.6,
+                reviews: 189
+            },
+            {
+                id: 31,
+                name: "Kachori",
+                weight: "2 pieces",
+                price: 35,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
+                badge: "Rajasthani",
+                rating: 4.3,
+                reviews: 156
+            },
+            {
+                id: 32,
+                name: "Aloo Bhujia",
+                weight: "1 pack (100g)",
+                price: 40,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
+                badge: "Rajasthani",
+                rating: 4.5,
+                reviews: 178
+            },
+            {
+                id: 33,
+                name: "Mixture",
+                weight: "1 pack (200g)",
+                price: 50,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
+                badge: "Traditional",
+                rating: 4.2,
+                reviews: 145
+            },
+            {
+                id: 34,
+                name: "Papad",
+                weight: "1 pack (10 pieces)",
+                price: 30,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
+                badge: "Crispy",
+                rating: 4.1,
+                reviews: 123
+            },
+            {
+                id: 35,
+                name: "Peanuts",
+                weight: "1 pack (100g)",
+                price: 25,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
+                badge: "Healthy",
+                rating: 4.0,
+                reviews: 98
+            },
+            {
+                id: 36,
+                name: "Cashew Nuts",
+                weight: "1 pack (50g)",
+                price: 120,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
+                badge: "Premium",
+                rating: 4.6,
+                reviews: 167
+            },
+            {
+                id: 37,
+                name: "Almonds",
+                weight: "1 pack (50g)",
+                price: 150,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "snacks",
+                badge: "Healthy",
+                rating: 4.7,
+                reviews: 189
+            },
+            {
+                id: 38,
+                name: "Green Tea",
+                weight: "10 tea bags",
+                price: 60,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
+                badge: "Healthy",
+                rating: 4.3,
+                reviews: 134
+            },
+            {
+                id: 39,
+                name: "Black Coffee",
+                weight: "10 sachets",
+                price: 50,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
+                badge: "Instant",
+                rating: 4.1,
+                reviews: 112
+            },
+            {
+                id: 40,
+                name: "Soup",
+                weight: "1 cup",
+                price: 60,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
+                badge: "Hot",
+                rating: 4.2,
+                reviews: 98
+            },
+            {
+                id: 41,
+                name: "Cold Drink",
+                weight: "500ml",
+                price: 40,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
+                badge: "Refreshing",
+                rating: 4.0,
+                reviews: 156
+            },
+            {
+                id: 42,
+                name: "Energy Drink",
+                weight: "250ml",
+                price: 80,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "essentials",
+                badge: "Boost",
+                rating: 4.1,
+                reviews: 123
+            },
+            {
+                id: 43,
+                name: "Earphones",
+                weight: "1 piece",
+                price: 300,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
+                badge: "Entertainment",
+                rating: 4.2,
+                reviews: 178
+            },
+            {
+                id: 44,
+                name: "Travel Adapter",
+                weight: "1 piece",
+                price: 150,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
+                badge: "Essential",
+                rating: 4.3,
+                reviews: 145
+            },
+            {
+                id: 45,
+                name: "Travel Lock",
+                weight: "1 piece",
+                price: 100,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
+                badge: "Security",
+                rating: 4.1,
+                reviews: 112
+            },
+            {
+                id: 46,
+                name: "Hand Sanitizer",
+                weight: "1 bottle (50ml)",
+                price: 40,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
+                badge: "Hygiene",
+                rating: 4.4,
+                reviews: 189
+            },
+            {
+                id: 47,
+                name: "Wet Wipes",
+                weight: "1 pack (10 wipes)",
+                price: 30,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
+                badge: "Hygiene",
+                rating: 4.2,
+                reviews: 156
+            },
+            {
+                id: 48,
+                name: "Tissue Paper",
+                weight: "1 pack",
+                price: 20,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
+                badge: "Essential",
+                rating: 4.0,
+                reviews: 134
+            },
+            {
+                id: 49,
+                name: "Face Mask",
+                weight: "3 pieces",
+                price: 30,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
+                badge: "Safety",
+                rating: 4.1,
+                reviews: 178
+            },
+            {
+                id: 50,
+                name: "Travel Toiletry Kit",
+                weight: "1 set",
+                price: 200,
+                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                category: "travel",
+                badge: "Complete",
+                rating: 4.5,
+                reviews: 201
             }
         ];
+
+        // Category counts
+        const categoryCounts = {
+            essentials: products.filter(p => p.category === "essentials").length,
+            travel: products.filter(p => p.category === "travel").length,
+            snacks: products.filter(p => p.category === "snacks").length,
+            meals: products.filter(p => p.category === "meals").length
+        };
 
         // Cart state
         let cart = [];
         let currentCategory = 'all';
-
-        // SheetDB Configuration
-        const SHEETDB_API_URL = "https://sheetdb.io/api/v1/42oa85sg85d0a";
-        const SHEETDB_API_KEY = "42oa85sg85d0a";
-
-        // Notifications data
-        let notifications = [
-            {
-                id: 1,
-                title: "Special Offer!",
-                message: "Get 20% off on your next order. Use code: RAIL20",
-                time: "2 hours ago",
-                unread: true
-            },
-            {
-                id: 2,
-                title: "Order Delivered",
-                message: "Your order #12345 has been delivered successfully",
-                time: "Yesterday",
-                unread: true
-            }
-        ];
+        let selectedRating = 0;
+        let searchQuery = '';
+        let isCategoryView = false;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts('all');
             setupEventListeners();
-            updateNotificationBadge();
-            checkForOrders();
+            updateCategoryCounts();
         });
 
         // Go to home function
         function goToHome(event) {
             event.preventDefault();
+            
+            // Reset to home view
+            document.getElementById('heroSection').style.display = 'block';
+            document.getElementById('searchResultsSection').classList.remove('active');
+            
+            // Clear search
+            document.getElementById('searchInput').value = '';
+            document.getElementById('mobileSearchInput').value = '';
+            searchQuery = '';
+            
+            // Reset to all products
+            currentCategory = 'all';
+            isCategoryView = false;
+            renderProducts('all');
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            showToast('Welcome to RailQuick! 🚂');
-        }
-
-        // Check for existing orders on page load
-        function checkForOrders() {
-            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
-            if (orders.length > 0) {
-                // Update notification with latest order status
-                const latestOrder = orders[orders.length - 1];
-                const notification = {
-                    id: 3,
-                    title: "Order Status Update",
-                    message: `Your order #${latestOrder.orderId} is ${latestOrder.status}`,
-                    time: "Just now",
-                    unread: true
-                };
-                notifications.push(notification);
-                updateNotificationBadge();
-            }
         }
 
         // Generate star rating HTML
@@ -2594,8 +3614,8 @@
         }
 
         // Render products
-        function renderProducts(category) {
-            const grid = document.getElementById('productGrid');
+        function renderProducts(category, containerId = 'productGrid') {
+            const grid = document.getElementById(containerId);
             grid.innerHTML = '';
 
             const filtered = category === 'all' 
@@ -2671,6 +3691,17 @@
             });
         }
 
+        // Update category counts
+        function updateCategoryCounts() {
+            document.querySelectorAll('.category-card').forEach(card => {
+                const category = card.dataset.category;
+                const countElement = card.querySelector('.category-count');
+                if (countElement) {
+                    countElement.textContent = `${categoryCounts[category]} items`;
+                }
+            });
+        }
+
         // Show search suggestions
         function showSearchSuggestions(query, suggestionsContainer) {
             if (!query) {
@@ -2711,6 +3742,110 @@
             suggestionsContainer.classList.add('active');
         }
 
+        // Perform search
+        function performSearch(query) {
+            searchQuery = query;
+            
+            if (!query) {
+                // Reset to home view
+                document.getElementById('heroSection').style.display = 'block';
+                document.getElementById('searchResultsSection').classList.remove('active');
+                renderProducts('all');
+                return;
+            }
+            
+            // Hide hero section and show search results
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('searchResultsSection').classList.add('active');
+            
+            // Filter and render search results
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            const searchGrid = document.getElementById('searchResultsGrid');
+            searchGrid.innerHTML = '';
+            
+            if (filtered.length === 0) {
+                searchGrid.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--gray-500);">No products found matching your search.</div>';
+                return;
+            }
+            
+            filtered.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                const inCart = cart.find(item => item.id === product.id);
+                const quantity = inCart ? inCart.quantity : 0;
+                
+                card.innerHTML = `
+                    ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-weight">${product.weight}</p>
+                        <div class="product-rating">
+                            <div class="rating-stars">
+                                ${generateStarRating(product.rating)}
+                            </div>
+                            <span class="rating-count">(${product.reviews})</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">₹${product.price}</span>
+                            <div class="product-quantity" data-id="${product.id}">
+                                ${quantity > 0 ? `
+                                    <button class="qty-btn decrease">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="qty-value">${quantity}</span>
+                                    <button class="qty-btn increase">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                ` : `
+                                    <button class="qty-btn add-to-cart">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                searchGrid.appendChild(card);
+            });
+            
+            // Add event listeners for quantity controls in search results
+            document.querySelectorAll('#searchResultsGrid .qty-btn.decrease').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
+                    decreaseQuantity(id);
+                    // Re-render search results to update cart state
+                    performSearch(searchQuery);
+                });
+            });
+            
+            document.querySelectorAll('#searchResultsGrid .qty-btn.increase').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
+                    increaseQuantity(id);
+                    // Re-render search results to update cart state
+                    performSearch(searchQuery);
+                });
+            });
+            
+            document.querySelectorAll('#searchResultsGrid .qty-btn.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
+                    addToCart(id);
+                    // Re-render search results to update cart state
+                    performSearch(searchQuery);
+                });
+            });
+        }
+
         // Increase quantity
         function increaseQuantity(productId) {
             const product = products.find(p => p.id === productId);
@@ -2723,8 +3858,6 @@
             }
             
             updateCart();
-            renderProducts(currentCategory);
-            showToast(`${product.name} added to cart!`);
         }
 
         // Decrease quantity
@@ -2734,27 +3867,29 @@
             if (existing && existing.quantity > 1) {
                 existing.quantity--;
                 updateCart();
-                renderProducts(currentCategory);
             } else if (existing && existing.quantity === 1) {
                 // Remove from cart if quantity is 1 and user clicks decrease
                 cart = cart.filter(item => item.id !== productId);
                 updateCart();
-                renderProducts(currentCategory);
-                showToast('Item removed from cart');
             }
         }
 
         // Setup event listeners
         function setupEventListeners() {
-            // Category cards
+            // Category cards - Show category modal
             document.querySelectorAll('.category-card').forEach(card => {
                 card.addEventListener('click', () => {
                     const category = card.dataset.category;
-                    renderProducts(category);
+                    showCategoryModal(category);
                 });
             });
 
-            // Desktop search with suggestions
+            // Category modal close
+            document.getElementById('categoryModalClose').addEventListener('click', () => {
+                document.getElementById('categoryModal').classList.remove('active');
+            });
+
+            // Desktop search
             const searchInput = document.getElementById('searchInput');
             const searchSuggestions = document.getElementById('searchSuggestions');
             
@@ -2774,7 +3909,7 @@
                 }
             });
 
-            // Mobile search with suggestions
+            // Mobile search
             const mobileSearchInput = document.getElementById('mobileSearchInput');
             const mobileSearchSuggestions = document.getElementById('mobileSearchSuggestions');
             
@@ -2794,6 +3929,20 @@
                 }
             });
 
+            // Search buttons
+            document.getElementById('searchBtn').addEventListener('click', () => {
+                performSearch(searchInput.value);
+            });
+
+            document.getElementById('mobileSearchBtn').addEventListener('click', () => {
+                performSearch(mobileSearchInput.value);
+            });
+
+            // Clear search button
+            document.getElementById('clearSearchBtn').addEventListener('click', () => {
+                goToHome({ preventDefault: () => {} });
+            });
+
             // Cart FAB
             document.getElementById('cartFab').addEventListener('click', () => {
                 document.getElementById('cartSidebar').classList.add('open');
@@ -2807,7 +3956,6 @@
             // Checkout
             document.getElementById('checkoutBtn').addEventListener('click', () => {
                 if (cart.length === 0) {
-                    showToast('Your cart is empty!');
                     return;
                 }
                 openCheckoutModal();
@@ -2816,16 +3964,6 @@
             // Modal close
             document.getElementById('modalClose').addEventListener('click', () => {
                 document.getElementById('checkoutModal').classList.remove('active');
-            });
-
-            // Payment modal close
-            document.getElementById('paymentModalClose').addEventListener('click', () => {
-                document.getElementById('paymentModal').classList.remove('active');
-            });
-
-            // Notifications modal close
-            document.getElementById('notificationsModalClose').addEventListener('click', () => {
-                document.getElementById('notificationsModal').classList.remove('active');
             });
 
             // Submit order
@@ -2869,113 +4007,207 @@
                 }
                 
                 if (!isValid) {
-                    showToast('Please fill in all required fields correctly');
                     return;
                 }
                 
-                const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
-                
-                if (paymentMethod === 'online') {
-                    openPaymentModal();
-                } else {
-                    processOrder('cod');
-                }
+                // Only COD is available now
+                processOrder('cod');
             });
 
-            // Process payment
-            document.getElementById('processPaymentBtn').addEventListener('click', () => {
-                processPayment();
+            // Feedback rating stars
+            document.querySelectorAll('.rating-star-btn').forEach(star => {
+                star.addEventListener('click', () => {
+                    const rating = parseInt(star.dataset.rating);
+                    selectedRating = rating;
+                    
+                    // Update UI
+                    document.querySelectorAll('.rating-star-btn').forEach((s, index) => {
+                        if (index < rating) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            // Submit feedback
+            document.getElementById('submitFeedbackBtn').addEventListener('click', () => {
+                const feedbackText = document.querySelector('.feedback-textarea').value;
+                
+                if (!selectedRating) {
+                    return;
+                }
+                
+                if (!feedbackText.trim()) {
+                    return;
+                }
+                
+                // For demo purposes, just log feedback
+                console.log('Feedback submitted:', {
+                    rating: selectedRating,
+                    text: feedbackText
+                });
+                
+                // Show success message
+                const feedbackBtn = document.getElementById('submitFeedbackBtn');
+                feedbackBtn.textContent = 'Feedback Submitted!';
+                feedbackBtn.style.background = 'linear-gradient(90deg, var(--success), var(--success-light))';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    document.querySelectorAll('.rating-star-btn').forEach(s => {
+                        s.classList.remove('active');
+                    });
+                    document.querySelector('.feedback-textarea').value = '';
+                    selectedRating = 0;
+                    feedbackBtn.textContent = 'Submit Feedback';
+                    feedbackBtn.style.background = '';
+                }, 2000);
             });
 
             // Back to home
             document.getElementById('backHomeBtn').addEventListener('click', () => {
+                document.getElementById('successModal').classList.remove('active');
                 location.reload();
             });
 
-            // Notification button
+            // Notification button - Desktop
             document.getElementById('notificationBtn').addEventListener('click', () => {
-                showNotifications();
+                const dropdown = document.getElementById('notificationDropdown');
+                dropdown.classList.toggle('active');
             });
 
-            // Mobile notification button
-            document.getElementById('mobileNotificationBtn').addEventListener('click', () => {
-                showNotifications();
-            });
-
-            // Format card number input
-            document.getElementById('cardNumber')?.addEventListener('input', (e) => {
-                let value = e.target.value.replace(/\s/g, '');
-                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-                e.target.value = formattedValue;
-            });
-
-            // Format expiry date input
-            document.getElementById('expiryDate')?.addEventListener('input', (e) => {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length >= 2) {
-                    value = value.slice(0, 2) + '/' + value.slice(2, 4);
-                }
-                e.target.value = value;
-            });
-
-            // Only allow numbers in CVV
-            document.getElementById('cvv')?.addEventListener('input', (e) => {
-                e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3);
-            });
-        }
-
-        // Show notifications
-        function showNotifications() {
-            const modal = document.getElementById('notificationsModal');
-            const notificationsList = document.getElementById('notificationsList');
-            
-            notificationsList.innerHTML = '';
-            
-            if (notifications.length === 0) {
-                notificationsList.innerHTML = '<p style="text-align: center; padding: 20px;">No notifications</p>';
-            } else {
-                notifications.forEach(notification => {
-                    const notificationItem = document.createElement('div');
-                    notificationItem.className = `notification-item ${notification.unread ? 'unread' : ''}`;
-                    notificationItem.innerHTML = `
-                        <h4>${notification.title}</h4>
-                        <p>${notification.message}</p>
-                        <small>${notification.time}</small>
-                        ${notification.unread ? `<button class="mark-read" onclick="markAsRead(${notification.id})"><i class="fas fa-check"></i></button>` : ''}
-                    `;
-                    notificationsList.appendChild(notificationItem);
+            // Mark all as read - Desktop
+            document.getElementById('markAllRead').addEventListener('click', () => {
+                document.querySelectorAll('#notificationList .notification-item').forEach(item => {
+                    item.classList.remove('unread');
                 });
-            }
+            });
+
+            // Notification button - Mobile
+            document.getElementById('mobileNotificationBtn').addEventListener('click', () => {
+                const dropdown = document.getElementById('mobileNotificationDropdown');
+                dropdown.classList.toggle('active');
+            });
+
+            // Mark all as read - Mobile
+            document.getElementById('mobileMarkAllRead').addEventListener('click', () => {
+                document.querySelectorAll('#mobileNotificationList .notification-item').forEach(item => {
+                    item.classList.remove('unread');
+                });
+            });
+
+            // Close notification dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.header-actions')) {
+                    document.getElementById('notificationDropdown').classList.remove('active');
+                }
+                if (!e.target.closest('.mobile-actions')) {
+                    document.getElementById('mobileNotificationDropdown').classList.remove('active');
+                }
+            });
+        }
+
+        // Show category modal
+        function showCategoryModal(category) {
+            const modal = document.getElementById('categoryModal');
+            const title = document.getElementById('categoryModalTitle');
+            const grid = document.getElementById('categoryProductsGrid');
             
+            // Set title based on category
+            const categoryNames = {
+                essentials: 'Essentials',
+                travel: 'Travel Essentials',
+                snacks: 'Snacks & Beverages',
+                meals: 'Meals'
+            };
+            
+            title.textContent = categoryNames[category] || 'Products';
+            
+            // Clear grid
+            grid.innerHTML = '';
+            
+            // Filter products by category
+            const filtered = products.filter(p => p.category === category);
+            
+            // Render products
+            filtered.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                const inCart = cart.find(item => item.id === product.id);
+                const quantity = inCart ? inCart.quantity : 0;
+                
+                card.innerHTML = `
+                    ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-weight">${product.weight}</p>
+                        <div class="product-rating">
+                            <div class="rating-stars">
+                                ${generateStarRating(product.rating)}
+                            </div>
+                            <span class="rating-count">(${product.reviews})</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">₹${product.price}</span>
+                            <div class="product-quantity" data-id="${product.id}">
+                                ${quantity > 0 ? `
+                                    <button class="qty-btn decrease">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="qty-value">${quantity}</span>
+                                    <button class="qty-btn increase">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                ` : `
+                                    <button class="qty-btn add-to-cart">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+            
+            // Add event listeners for quantity controls
+            document.querySelectorAll('#categoryProductsGrid .qty-btn.decrease').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
+                    decreaseQuantity(id);
+                    // Re-render category modal to update cart state
+                    showCategoryModal(category);
+                });
+            });
+            
+            document.querySelectorAll('#categoryProductsGrid .qty-btn.increase').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
+                    increaseQuantity(id);
+                    // Re-render category modal to update cart state
+                    showCategoryModal(category);
+                });
+            });
+            
+            document.querySelectorAll('#categoryProductsGrid .qty-btn.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(btn.closest('.product-quantity').dataset.id);
+                    addToCart(id);
+                    // Re-render category modal to update cart state
+                    showCategoryModal(category);
+                });
+            });
+            
+            // Show modal
             modal.classList.add('active');
-        }
-
-        // Mark notification as read
-        function markAsRead(notificationId) {
-            const notification = notifications.find(n => n.id === notificationId);
-            if (notification) {
-                notification.unread = false;
-                updateNotificationBadge();
-                showNotifications(); // Refresh notifications list
-                showToast('Notification marked as read');
-            }
-        }
-
-        // Update notification badge
-        function updateNotificationBadge() {
-            const badge = document.getElementById('notificationBadge');
-            const mobileBadge = document.getElementById('mobileNotificationBadge');
-            const unreadCount = notifications.filter(n => n.unread).length;
-            
-            if (unreadCount > 0) {
-                badge.textContent = unreadCount;
-                badge.style.display = 'flex';
-                mobileBadge.textContent = unreadCount;
-                mobileBadge.style.display = 'flex';
-            } else {
-                badge.style.display = 'none';
-                mobileBadge.style.display = 'none';
-            }
         }
 
         // Add to cart
@@ -2990,8 +4222,6 @@
             }
             
             updateCart();
-            renderProducts(currentCategory);
-            showToast(`${product.name} added to cart!`);
         }
 
         // Update cart
@@ -3075,8 +4305,6 @@
                     const id = parseInt(btn.dataset.id);
                     cart = cart.filter(i => i.id !== id);
                     updateCart();
-                    renderProducts(currentCategory);
-                    showToast('Item removed from cart');
                 });
             });
         }
@@ -3103,153 +4331,8 @@
             modal.classList.add('active');
         }
 
-        // Open payment modal
-        function openPaymentModal() {
-            const modal = document.getElementById('paymentModal');
-            const summaryItems = document.getElementById('paymentSummaryItems');
-            const summaryTotal = document.getElementById('paymentTotal');
-            
-            summaryItems.innerHTML = '';
-            cart.forEach(item => {
-                summaryItems.innerHTML += `
-                    <div class="summary-item">
-                        <span>${item.name} x ${item.quantity}</span>
-                        <span>₹${item.price * item.quantity}</span>
-                    </div>
-                `;
-            });
-            
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            summaryTotal.textContent = `₹${total}`;
-            
-            modal.classList.add('active');
-        }
-
-        // Process payment
-        function processPayment() {
-            const cardNumber = document.getElementById('cardNumber').value;
-            const expiryDate = document.getElementById('expiryDate').value;
-            const cvv = document.getElementById('cvv').value;
-            const cardholderName = document.getElementById('cardholderName').value;
-            
-            // Simple validation
-            if (!cardNumber || cardNumber.replace(/\s/g, '').length < 16) {
-                document.getElementById('cardNumber').classList.add('error');
-                showToast('Please enter a valid card number');
-                return;
-            } else {
-                document.getElementById('cardNumber').classList.remove('error');
-            }
-            
-            if (!expiryDate || expiryDate.length < 5) {
-                document.getElementById('expiryDate').classList.add('error');
-                showToast('Please enter a valid expiry date');
-                return;
-            } else {
-                document.getElementById('expiryDate').classList.remove('error');
-            }
-            
-            if (!cvv || cvv.length < 3) {
-                document.getElementById('cvv').classList.add('error');
-                showToast('Please enter a valid CVV');
-                return;
-            } else {
-                document.getElementById('cvv').classList.remove('error');
-            }
-            
-            if (!cardholderName) {
-                document.getElementById('cardholderName').classList.add('error');
-                showToast('Please enter cardholder name');
-                return;
-            } else {
-                document.getElementById('cardholderName').classList.remove('error');
-            }
-            
-            // Show loading state
-            const btn = document.getElementById('processPaymentBtn');
-            btn.classList.add('loading');
-            btn.disabled = true;
-            
-            // Simulate payment processing
-            showToast('Processing payment...');
-            
-            setTimeout(() => {
-                document.getElementById('paymentModal').classList.remove('active');
-                processOrder('online');
-                btn.classList.remove('loading');
-                btn.disabled = false;
-            }, 2000);
-        }
-
-        // Send SMS with order details
-        async function sendOrderSMS(order) {
-            const phoneNumber = order.phone;
-            const orderId = order.orderId;
-            const customerName = order.name;
-            const totalAmount = order.total;
-            const trainNumber = order.train;
-            const seatNumber = order.seat;
-            
-            // SMS message template
-            const message = `Dear ${customerName}, your order #${orderId} is confirmed! Amount: ₹${totalAmount}. Train: ${trainNumber}, Seat: ${seatNumber}. We'll deliver at next station. Thank you for choosing RailQuick!`;
-            
-            // For demo purposes, we'll just log the message
-            console.log('SMS would be sent to:', phoneNumber);
-            console.log('Message:', message);
-            
-            // For demo, return success
-            return { success: true, messageId: 'demo_' + Date.now() };
-        }
-
-        // Save order to Google Sheets via SheetDB
-        async function saveOrderToSheetDB(order) {
-            try {
-                // Prepare order data for SheetDB
-                const orderData = {
-                    OrderID: order.orderId,
-                    CustomerName: order.name,
-                    PhoneNumber: order.phone,
-                    TrainNumber: order.train,
-                    SeatCoachNumber: order.seat,
-                    OrderItems: order.items.map(item => `${item.name} x ${item.quantity}`).join(', '),
-                    TotalAmount: order.total,
-                    PaymentMethod: order.paymentMethod,
-                    OrderDate: new Date().toLocaleDateString(),
-                    Status: "Processing"
-                };
-                
-                // Send to SheetDB API
-                const response = await fetch(SHEETDB_API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${SHEETDB_API_KEY}`
-                    },
-                    body: JSON.stringify({
-                        data: orderData
-                    })
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Failed to save order to SheetDB');
-                }
-                
-                const result = await response.json();
-                
-                // Also save to localStorage as backup
-                const orders = JSON.parse(localStorage.getItem('orders') || '[]');
-                orders.push(order);
-                localStorage.setItem('orders', JSON.stringify(orders));
-                
-                return { success: true, sheetDBId: result.id };
-            } catch (error) {
-                console.error('Error saving order to SheetDB:', error);
-                return { success: false, error: error.message };
-            }
-        }
-
         // Process order
-        async function processOrder(paymentMethod) {
+        function processOrder(paymentMethod) {
             const order = {
                 orderId: 'RQ' + Date.now(),
                 name: document.getElementById('customerName').value,
@@ -3267,32 +4350,14 @@
             btn.classList.add('loading');
             btn.disabled = true;
             
-            // Save order to Google Sheets via SheetDB
-            const saveResult = await saveOrderToSheetDB(order);
-            
-            if (saveResult.success) {
-                // Send SMS notification
-                const smsResult = await sendOrderSMS(order);
+            // Simulate order processing
+            setTimeout(() => {
+                // Save order to localStorage
+                const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+                orders.push(order);
+                localStorage.setItem('orders', JSON.stringify(orders));
                 
-                // Update order status in SheetDB to "Confirmed"
-                try {
-                    await fetch(`${SHEETDB_API_URL}/${saveResult.sheetDBId}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${SHEETDB_API_KEY}`
-                        },
-                        body: JSON.stringify({
-                            data: {
-                                Status: "Confirmed"
-                            }
-                        })
-                    });
-                } catch (error) {
-                    console.error('Error updating order status:', error);
-                }
-                
-                // Close modals and show success page
+                // Close modal and show success page
                 document.getElementById('checkoutModal').classList.remove('active');
                 document.getElementById('cartSidebar').classList.remove('open');
                 
@@ -3300,68 +4365,26 @@
                 updateCart();
                 renderProducts(currentCategory);
                 
-                showSuccessPage(order, smsResult);
-            } else {
-                showToast('Failed to place order. Please try again.');
+                showSuccessModal(order);
+                
                 btn.classList.remove('loading');
                 btn.disabled = false;
-            }
+            }, 2000);
         }
 
-        // Show success page
-        function showSuccessPage(order, smsResult) {
-            // Hide main content and show success page
-            document.querySelector('main').style.display = 'none';
-            document.querySelector('.header').style.display = 'none';
-            document.querySelector('.mobile-header').style.display = 'none';
-            document.querySelector('.mobile-search-section').style.display = 'none';
-            document.querySelector('.cart-container').style.display = 'none';
-            
-            const successPage = document.getElementById('successPage');
-            successPage.style.display = 'flex';
+        // Show success modal
+        function showSuccessModal(order) {
+            const modal = document.getElementById('successModal');
             
             // Update order details
             document.getElementById('orderId').textContent = '#' + order.orderId;
             document.getElementById('customerNameDisplay').textContent = order.name;
             document.getElementById('trainNumberDisplay').textContent = order.train;
             document.getElementById('seatNumberDisplay').textContent = order.seat;
-            document.getElementById('paymentMethodDisplay').textContent = 
-                order.paymentMethod === 'online' ? 'Online Payment' : 'Cash on Delivery';
             document.getElementById('totalAmountDisplay').textContent = '₹' + order.total;
             
-            // Calculate estimated delivery time (next station in ~30 mins)
-            const deliveryTime = new Date(Date.now() + 30 * 60000);
-            document.getElementById('deliveryTimeDisplay').textContent = 
-                deliveryTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-            
-            // Add SMS status
-            const detailContainer = document.querySelector('.success-details');
-            const smsStatusDiv = document.createElement('div');
-            smsStatusDiv.className = 'detail-row';
-            smsStatusDiv.innerHTML = `
-                <span class="detail-label">SMS Status</span>
-                <span class="detail-value">
-                    <div class="sms-status ${smsResult.success ? 'success' : 'error'}">
-                        <i class="fas ${smsResult.success ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
-                        ${smsResult.success ? 'SMS Sent Successfully' : 'SMS Failed'}
-                    </div>
-                </span>
-            `;
-            detailContainer.appendChild(smsStatusDiv);
-            
-            // Show success message
-            showToast('Order placed successfully! We will deliver soon.');
-        }
-
-        // Show toast
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.querySelector('.toast-message').textContent = message;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+            // Show modal
+            modal.classList.add('active');
         }
     </script>
 </body>
