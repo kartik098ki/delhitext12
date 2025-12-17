@@ -132,7 +132,7 @@
         }
 
         .logo-img {
-            height: 60px; /* Increased from 45px */
+            height: 80px; /* Increased from 60px */
             width: auto;
             object-fit: contain;
             transition: var(--transition);
@@ -246,7 +246,7 @@
         }
 
         .mobile-logo-img {
-            height: 50px; /* Increased from 38px */
+            height: 70px; /* Increased from 50px */
             width: auto;
             object-fit: contain;
         }
@@ -512,124 +512,6 @@
             font-size: 1.1rem;
             opacity: 0.95;
             animation: slideInLeft 0.8s ease 0.2s both;
-        }
-
-        /* Special Offers */
-        .offers-section {
-            margin: 40px 0;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 3px;
-        }
-
-        .see-all {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            transition: var(--transition);
-            padding: 8px 16px;
-            border-radius: 20px;
-            background: rgba(108, 99, 255, 0.1);
-        }
-
-        .see-all:hover {
-            transform: translateX(5px);
-            background: rgba(108, 99, 255, 0.15);
-        }
-
-        .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-        }
-
-        .offer-card {
-            background: var(--light);
-            border-radius: 20px;
-            padding: 25px 20px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-            border: 1px solid var(--gray-200);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .offer-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .offer-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .offer-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .offer-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 15px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: white;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-
-        .offer-card:hover .offer-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
-        }
-
-        .offer-title {
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 1.05rem;
-        }
-
-        .offer-desc {
-            font-size: 0.9rem;
-            color: var(--gray-600);
         }
 
         /* Categories - Updated to make them smaller and on the same line */
@@ -2060,35 +1942,12 @@
                 font-size: 1rem;
             }
 
-            .offers-section, .categories-section, .products-section {
+            .categories-section, .products-section {
                 margin: 30px 0;
             }
 
             .section-title {
                 font-size: 1.5rem;
-            }
-
-            .offers-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 15px;
-            }
-
-            .offer-card {
-                padding: 20px 15px;
-            }
-
-            .offer-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-
-            .offer-title {
-                font-size: 0.95rem;
-            }
-
-            .offer-desc {
-                font-size: 0.85rem;
             }
 
             .categories-grid {
@@ -2522,44 +2381,6 @@
             </div>
         </section>
 
-        <!-- Special Offers -->
-        <section class="offers-section">
-            <div class="section-title">
-                Special Offers
-                <span class="see-all">See all <i class="fas fa-chevron-right"></i></span>
-            </div>
-            <div class="offers-grid">
-                <div class="offer-card">
-                    <div class="offer-icon">
-                        <i class="fas fa-percentage"></i>
-                    </div>
-                    <div class="offer-title">Best Deals</div>
-                    <div class="offer-desc">Up to 50% off</div>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <div class="offer-title">Quick Delivery</div>
-                    <div class="offer-desc">At next station</div>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-icon">
-                        <i class="fas fa-tag"></i>
-                    </div>
-                    <div class="offer-title">Daily Offers</div>
-                    <div class="offer-desc">Special prices</div>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <div class="offer-title">Combo Meals</div>
-                    <div class="offer-desc">Save more</div>
-                </div>
-            </div>
-        </section>
-
         <!-- Categories -->
         <section class="categories-section">
             <div class="section-title">
@@ -2732,8 +2553,8 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Phone Number</label>
-                        <input type="tel" class="form-input" id="contactNumber" pattern="[0-9]{10}" required>
-                        <span class="error-message">Please enter a valid 10-digit phone number</span>
+                        <input type="tel" class="form-input" id="contactNumber" pattern="[6-9][0-9]{9}" maxlength="10" required>
+                        <span class="error-message">Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9</span>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Train Number</label>
@@ -3975,7 +3796,7 @@
                     customerName.classList.remove('error');
                 }
                 
-                if (!contactNumber.value.trim() || !/^[0-9]{10}$/.test(contactNumber.value)) {
+                if (!contactNumber.value.trim() || !/^[6-9][0-9]{9}$/.test(contactNumber.value)) {
                     contactNumber.classList.add('error');
                     isValid = false;
                 } else {
