@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Your existing CSS styles remain the same */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
         :root {
@@ -104,7 +105,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 12px 0;
+            padding: 8px 0; /* Reduced padding */
             border-bottom: 1px solid rgba(0, 0, 0, 0.03);
         }
 
@@ -132,7 +133,7 @@
         }
 
         .logo-img {
-            height: 100px; /* Increased from 80px */
+            height: 70px; /* Reduced from 100px */
             width: auto;
             object-fit: contain;
             transition: var(--transition);
@@ -226,7 +227,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 12px 0;
+            padding: 8px 0; /* Reduced padding */
             border-bottom: 1px solid rgba(0, 0, 0, 0.03);
         }
 
@@ -246,7 +247,7 @@
         }
 
         .mobile-logo-img {
-            height: 90px; /* Increased from 70px */
+            height: 60px; /* Reduced from 90px */
             width: auto;
             object-fit: contain;
         }
@@ -2369,6 +2370,38 @@
                 font-size: 0.85rem;
             }
         }
+
+        /* Order Success Toast */
+        .order-success-toast {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+            max-width: 300px;
+        }
+
+        .order-success-toast.show {
+            transform: translateX(0);
+        }
+
+        .order-success-toast i {
+            color: var(--success);
+            font-size: 1.5rem;
+        }
+
+        .order-success-toast p {
+            margin: 0;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -2782,6 +2815,12 @@
         </div>
     </div>
 
+    <!-- Order Success Toast -->
+    <div class="order-success-toast" id="orderSuccessToast">
+        <i class="fas fa-check-circle"></i>
+        <p>Your order has been successfully submitted!</p>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-wave"></div>
@@ -2838,7 +2877,16 @@
     </footer>
 
     <script>
-        // Products data - updated with the new products
+        // API endpoints for Google Sheets - Updated with specific endpoints for each data type
+        const API_ENDPOINTS = {
+            orders: 'https://sheetdb.io/api/v1/dqzrrfxybkjx2', // For order data
+            feedback: 'https://sheetdb.io/api/v1/uz6ybjgp7dudj', // For feedback data
+            productSuggestions: 'https://sheetdb.io/api/v1/dqzrrfxybkjx2', // For product suggestions
+            noProductsFound: 'https://sheetdb.io/api/v1/7v1c96y1nkrno', // For "No products found" suggestions
+            generalSuggestions: 'https://sheetdb.io/api/v1/2dlah0dlg86y8' // For "Can't find what you're looking for" suggestions
+        };
+
+        // Products data - updated with new image URLs and price
         const products = [
             {
                 id: 1,
@@ -3041,7 +3089,7 @@
                 name: "Travel Blanket",
                 weight: "1 piece",
                 price: 350,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                image: "https://billebon.com/cdn/shop/files/Artboard2_f1541bc6-d9dd-48f8-86b3-188f6edfe95b.jpg?v=1761044588",
                 category: "travel",
                 rating: 4.3,
                 reviews: 78
@@ -3051,7 +3099,7 @@
                 name: "Eye Mask for Travel",
                 weight: "1 piece",
                 price: 130,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                image: "https://media-ik.croma.com/prod/https://media.tatacroma.com/Croma%20Assets/Miscellanous/Travel%20Accessories/Images/8988920119326.png",
                 category: "travel",
                 rating: 4.5,
                 reviews: 145
@@ -3061,7 +3109,7 @@
                 name: "Parle Hide & Seek Biscuits",
                 weight: "1 pack (100g)",
                 price: 30,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                image: "https://regalplus.com/cdn/shop/files/hidenseekbis.jpg?v=1736527557&width=1080",
                 category: "essentials",
                 rating: 4.2,
                 reviews: 103
@@ -3071,7 +3119,7 @@
                 name: "Mineral Water Bottle",
                 weight: "1 litre",
                 price: 20,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/wnushvamuaheo4v0ertj",
                 category: "essentials",
                 rating: 4.1,
                 reviews: 87
@@ -3080,11 +3128,62 @@
                 id: 24,
                 name: "Fresh Fruit Juice",
                 weight: "500ml",
-                price: 40,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                price: 99, // Updated price as requested
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxTJDpRea04L6pFlHxH_iFLgODclXzAzM2Nw&s",
                 category: "essentials",
                 rating: 4.3,
                 reviews: 112
+            },
+            // New products added as requested
+            {
+                id: 25,
+                name: "Flower",
+                weight: "100g",
+                price: 299,
+                image: "https://cdnnew.igp.com/f_auto,q_auto,t_pnopt19prodlp/products/p-bouquet-of-10-pink-gerberas-6646-m.jpg",
+                category: "essentials",
+                rating: 4.6,
+                reviews: 78
+            },
+            {
+                id: 26,
+                name: "Medigrip Cotton Crepe Bandage",
+                weight: "200g",
+                price: 99,
+                image: "https://d29azk3rh443yy.cloudfront.net/static/Products/Medigrip-Cotton-Crepe-Bandage-10CM-x-4MTR-surginatal.com-001.webp",
+                category: "travel",
+                rating: 4.4,
+                reviews: 92
+            },
+            {
+                id: 27,
+                name: "Another Product",
+                weight: "200g",
+                price: 149,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXy5JoaM98BMudyy2iI2P-gjgNK2L7FT6g0w&s",
+                category: "meals",
+                rating: 4.2,
+                reviews: 56
+            },
+            {
+                id: 28,
+                name: "Britannia Bourbon Biscuits",
+                weight: "200g",
+                price: 24,
+                image: "https://m.media-amazon.com/images/I/71A0ZwJUmQL.jpg",
+                category: "snacks",
+                rating: 4.5,
+                reviews: 134
+            },
+            {
+                id: 29,
+                name: "Miniso",
+                weight: "200g",
+                price: 149,
+                image: "data:image/jpeg;base64,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",
+                category: "travel",
+                rating: 4.3,
+                reviews: 102
             }
         ];
 
@@ -3111,6 +3210,43 @@
             updateCategoryCounts();
             updateCart();
         });
+
+        // Function to send data to Google Sheets - Updated with proper error handling
+        async function sendToGoogleSheet(endpoint, data) {
+            try {
+                console.log('Sending data to Google Sheets:', data); // Debug log
+                
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                console.log('Google Sheets response:', result); // Debug log
+                return { success: true, data: result };
+            } catch (error) {
+                console.error('Error sending data to Google Sheets:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Function to show order success toast
+        function showOrderSuccessToast() {
+            const toast = document.getElementById('orderSuccessToast');
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        }
 
         // Go to home function
         function goToHome(event) {
@@ -3547,12 +3683,16 @@
                 document.getElementById('categoryModal').classList.remove('active');
             });
 
-            // Desktop search
+            // Desktop search - Fixed to automatically show "No products found"
             const searchInput = document.getElementById('searchInput');
             const searchSuggestions = document.getElementById('searchSuggestions');
             
             searchInput.addEventListener('input', (e) => {
-                showSearchSuggestions(e.target.value, searchSuggestions);
+                const query = e.target.value;
+                showSearchSuggestions(query, searchSuggestions);
+                
+                // Perform search automatically as user types
+                performSearch(query);
             });
 
             searchInput.addEventListener('focus', () => {
@@ -3567,12 +3707,16 @@
                 }
             });
 
-            // Mobile search
+            // Mobile search - Fixed to automatically show "No products found"
             const mobileSearchInput = document.getElementById('mobileSearchInput');
             const mobileSearchSuggestions = document.getElementById('mobileSearchSuggestions');
             
             mobileSearchInput.addEventListener('input', (e) => {
-                showSearchSuggestions(e.target.value, mobileSearchSuggestions);
+                const query = e.target.value;
+                showSearchSuggestions(query, mobileSearchSuggestions);
+                
+                // Perform search automatically as user types
+                performSearch(query);
             });
 
             mobileSearchInput.addEventListener('focus', () => {
@@ -3587,7 +3731,7 @@
                 }
             });
 
-            // Search buttons
+            // Search buttons - Still keep for manual search if needed
             document.getElementById('searchBtn').addEventListener('click', () => {
                 performSearch(searchInput.value);
             });
@@ -3601,23 +3745,39 @@
                 goToHome({ preventDefault: () => {} });
             });
 
-            // No results suggestion form
-            document.getElementById('noResultsSuggestionForm').addEventListener('submit', (e) => {
+            // No results suggestion form - Connected to Google Sheets
+            document.getElementById('noResultsSuggestionForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 const suggestion = document.getElementById('noResultsSuggestionInput').value;
                 
-                // For demo purposes, just log suggestion
-                console.log('No results suggestion:', suggestion);
+                // Send suggestion to Google Sheets
+                const suggestionData = {
+                    data: {
+                        type: 'no_products_found_suggestion',
+                        suggestion: suggestion,
+                        timestamp: new Date().toISOString()
+                    }
+                };
                 
-                // Show success message
-                document.getElementById('noResultsSuggestionSuccess').style.display = 'block';
+                const result = await sendToGoogleSheet(API_ENDPOINTS.noProductsFound, suggestionData);
                 
-                // Reset form after delay
-                setTimeout(() => {
-                    document.getElementById('noResultsSuggestionForm').reset();
-                    document.getElementById('noResultsSuggestionSuccess').style.display = 'none';
-                }, 3000);
+                if (result.success) {
+                    // Show success message
+                    document.getElementById('noResultsSuggestionSuccess').style.display = 'block';
+                    
+                    // Reset form after delay
+                    setTimeout(() => {
+                        document.getElementById('noResultsSuggestionForm').reset();
+                        document.getElementById('noResultsSuggestionSuccess').style.display = 'none';
+                    }, 3000);
+                } else {
+                    // Show error message
+                    document.getElementById('noResultsSuggestionSuccess').textContent = 'Error submitting suggestion. Please try again.';
+                    document.getElementById('noResultsSuggestionSuccess').style.display = 'block';
+                    document.getElementById('noResultsSuggestionSuccess').style.background = 'rgba(255, 107, 107, 0.1)';
+                    document.getElementById('noResultsSuggestionSuccess').style.color = 'var(--secondary)';
+                }
             });
 
             // Cart FAB
@@ -3643,8 +3803,8 @@
                 document.getElementById('checkoutModal').classList.remove('active');
             });
 
-            // Submit order
-            document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+            // Submit order - Connected to Google Sheets with new endpoint
+            document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 // Validate form
@@ -3687,8 +3847,75 @@
                     return;
                 }
                 
-                // Only COD is available now
-                processOrder('cod');
+                // Prepare order data for Google Sheets
+                const orderId = 'RQ' + Date.now();
+                const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                
+                // Create a detailed order summary string
+                const orderItems = cart.map(item => 
+                    `${item.name} (${item.quantity} x ₹${item.price})`
+                ).join(', ');
+                
+                // Format date and time
+                const now = new Date();
+                const orderDate = now.toLocaleDateString('en-IN');
+                const orderTime = now.toLocaleTimeString('en-IN');
+                
+                // Prepare data for Google Sheets - using exact column names
+                const orderData = {
+                    data: {
+                        "Order ID": orderId,
+                        "Customer Name": customerName.value,
+                        "Contact Number": contactNumber.value,
+                        "Train Number": trainNumber.value,
+                        "Seat/Coach Number": seatNumber.value,
+                        "Order Items": orderItems,
+                        "Total Amount": totalPrice,
+                        "Payment Method": "Cash on Delivery",
+                        "Order Date": orderDate,
+                        "Order Time": orderTime
+                    }
+                };
+                
+                // Show loading state
+                const btn = document.querySelector('#checkoutForm .place-order-btn');
+                btn.classList.add('loading');
+                btn.disabled = true;
+                
+                // Send order to Google Sheets
+                const result = await sendToGoogleSheet(API_ENDPOINTS.orders, orderData);
+                
+                // Simulate order processing
+                setTimeout(() => {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                    
+                    if (result.success) {
+                        // Close modal and show success page
+                        document.getElementById('checkoutModal').classList.remove('active');
+                        document.getElementById('cartSidebar').classList.remove('open');
+                        
+                        // Show success toast
+                        showOrderSuccessToast();
+                        
+                        // Show success modal with order details
+                        showSuccessModal({
+                            orderId: orderId,
+                            name: customerName.value,
+                            train: trainNumber.value,
+                            seat: seatNumber.value,
+                            total: totalPrice
+                        });
+                        
+                        // Clear cart
+                        cart = [];
+                        updateCart();
+                        renderProducts(currentCategory);
+                    } else {
+                        // Show error message
+                        alert('Error placing order: ' + result.error + '. Please try again.');
+                    }
+                }, 2000);
             });
 
             // Feedback rating stars
@@ -3708,8 +3935,8 @@
                 });
             });
 
-            // Submit feedback
-            document.getElementById('submitFeedbackBtn').addEventListener('click', () => {
+            // Submit feedback - Connected to Google Sheets
+            document.getElementById('submitFeedbackBtn').addEventListener('click', async () => {
                 const feedbackText = document.querySelector('.feedback-textarea').value;
                 
                 if (!selectedRating) {
@@ -3720,27 +3947,39 @@
                     return;
                 }
                 
-                // For demo purposes, just log feedback
-                console.log('Feedback submitted:', {
-                    rating: selectedRating,
-                    text: feedbackText
-                });
+                // Prepare feedback data
+                const feedbackData = {
+                    data: {
+                        type: 'website_feedback_with_rating',
+                        rating: selectedRating,
+                        feedback: feedbackText,
+                        timestamp: new Date().toISOString()
+                    }
+                };
                 
-                // Show success message
-                const feedbackBtn = document.getElementById('submitFeedbackBtn');
-                feedbackBtn.textContent = 'Feedback Submitted!';
-                feedbackBtn.style.background = 'linear-gradient(90deg, var(--success), var(--success-light))';
+                // Send feedback to Google Sheets
+                const result = await sendToGoogleSheet(API_ENDPOINTS.feedback, feedbackData);
                 
-                // Reset form after delay
-                setTimeout(() => {
-                    document.querySelectorAll('.rating-star-btn').forEach(s => {
-                        s.classList.remove('active');
-                    });
-                    document.querySelector('.feedback-textarea').value = '';
-                    selectedRating = 0;
-                    feedbackBtn.textContent = 'Submit Feedback';
-                    feedbackBtn.style.background = '';
-                }, 2000);
+                if (result.success) {
+                    // Show success message
+                    const feedbackBtn = document.getElementById('submitFeedbackBtn');
+                    feedbackBtn.textContent = 'Feedback Submitted!';
+                    feedbackBtn.style.background = 'linear-gradient(90deg, var(--success), var(--success-light))';
+                    
+                    // Reset form after delay
+                    setTimeout(() => {
+                        document.querySelectorAll('.rating-star-btn').forEach(s => {
+                            s.classList.remove('active');
+                        });
+                        document.querySelector('.feedback-textarea').value = '';
+                        selectedRating = 0;
+                        feedbackBtn.textContent = 'Submit Feedback';
+                        feedbackBtn.style.background = '';
+                    }, 2000);
+                } else {
+                    // Show error message
+                    alert('Error submitting feedback. Please try again.');
+                }
             });
 
             // Back to home
@@ -3785,27 +4024,42 @@
                 }
             });
 
-            // Suggestion form
-            document.getElementById('suggestionForm').addEventListener('submit', (e) => {
+            // Suggestion form - Connected to Google Sheets
+            document.getElementById('suggestionForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 const email = document.getElementById('suggestionEmail').value;
                 const suggestion = document.getElementById('suggestionText').value;
                 
-                // For demo purposes, just log suggestion
-                console.log('Suggestion submitted:', {
-                    email: email,
-                    suggestion: suggestion
-                });
+                // Prepare suggestion data
+                const suggestionData = {
+                    data: {
+                        type: 'cant_find_product_suggestion',
+                        email: email,
+                        suggestion: suggestion,
+                        timestamp: new Date().toISOString()
+                    }
+                };
                 
-                // Show success message
-                document.getElementById('suggestionSuccess').style.display = 'block';
+                // Send suggestion to Google Sheets
+                const result = await sendToGoogleSheet(API_ENDPOINTS.generalSuggestions, suggestionData);
                 
-                // Reset form after delay
-                setTimeout(() => {
-                    document.getElementById('suggestionForm').reset();
-                    document.getElementById('suggestionSuccess').style.display = 'none';
-                }, 3000);
+                if (result.success) {
+                    // Show success message
+                    document.getElementById('suggestionSuccess').style.display = 'block';
+                    
+                    // Reset form after delay
+                    setTimeout(() => {
+                        document.getElementById('suggestionForm').reset();
+                        document.getElementById('suggestionSuccess').style.display = 'none';
+                    }, 3000);
+                } else {
+                    // Show error message
+                    document.getElementById('suggestionSuccess').textContent = 'Error submitting suggestion. Please try again.';
+                    document.getElementById('suggestionSuccess').style.display = 'block';
+                    document.getElementById('suggestionSuccess').style.background = 'rgba(255, 107, 107, 0.1)';
+                    document.getElementById('suggestionSuccess').style.color = 'var(--secondary)';
+                }
             });
         }
 
@@ -3906,47 +4160,6 @@
             summaryTotal.textContent = `₹${total}`;
             
             modal.classList.add('active');
-        }
-
-        // Process order
-        function processOrder(paymentMethod) {
-            const order = {
-                orderId: 'RQ' + Date.now(),
-                name: document.getElementById('customerName').value,
-                phone: document.getElementById('contactNumber').value,
-                train: document.getElementById('trainNumber').value,
-                seat: document.getElementById('seatNumber').value,
-                items: cart,
-                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-                paymentMethod: paymentMethod,
-                time: new Date().toISOString()
-            };
-            
-            // Show loading state
-            const btn = document.querySelector('#checkoutForm .place-order-btn');
-            btn.classList.add('loading');
-            btn.disabled = true;
-            
-            // Simulate order processing
-            setTimeout(() => {
-                // Save order to localStorage
-                const orders = JSON.parse(localStorage.getItem('orders') || '[]');
-                orders.push(order);
-                localStorage.setItem('orders', JSON.stringify(orders));
-                
-                // Close modal and show success page
-                document.getElementById('checkoutModal').classList.remove('active');
-                document.getElementById('cartSidebar').classList.remove('open');
-                
-                cart = [];
-                updateCart();
-                renderProducts(currentCategory);
-                
-                showSuccessModal(order);
-                
-                btn.classList.remove('loading');
-                btn.disabled = false;
-            }, 2000);
         }
 
         // Show success modal
