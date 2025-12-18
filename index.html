@@ -132,7 +132,7 @@
         }
 
         .logo-img {
-            height: 80px; /* Increased from 60px */
+            height: 100px; /* Increased from 80px */
             width: auto;
             object-fit: contain;
             transition: var(--transition);
@@ -246,7 +246,7 @@
         }
 
         .mobile-logo-img {
-            height: 70px; /* Increased from 50px */
+            height: 90px; /* Increased from 70px */
             width: auto;
             object-fit: contain;
         }
@@ -373,6 +373,92 @@
 
         .clear-search-btn:hover {
             color: var(--primary-dark);
+        }
+
+        /* No Results Section */
+        .no-results-section {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--gray-50);
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .no-results-section.active {
+            display: block;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            color: var(--gray-400);
+            margin-bottom: 20px;
+        }
+
+        .no-results-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .no-results-text {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .suggestion-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .suggestion-input {
+            padding: 15px 20px;
+            border: 2px solid var(--gray-200);
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--light);
+        }
+
+        .suggestion-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--light);
+            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
+        }
+
+        .suggestion-btn {
+            padding: 15px 30px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: center;
+        }
+
+        .suggestion-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .suggestion-success {
+            display: none;
+            padding: 15px;
+            background: rgba(6, 214, 160, 0.1);
+            border-radius: 15px;
+            color: var(--success);
+            font-weight: 600;
+            margin-top: 15px;
         }
 
         /* Search Suggestions */
@@ -517,6 +603,32 @@
         /* Categories - Updated to make them smaller and on the same line */
         .categories-section {
             margin: 40px 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .see-all {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .see-all:hover {
+            color: var(--primary-dark);
+            transform: translateX(5px);
         }
 
         .categories-grid {
@@ -2381,6 +2493,22 @@
             </div>
         </section>
 
+        <!-- No Results Section -->
+        <section class="no-results-section" id="noResultsSection">
+            <div class="no-results-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <h2 class="no-results-title">No products found</h2>
+            <p class="no-results-text">We couldn't find any products matching your search. Let us know what you're looking for, and we'll try to add it soon!</p>
+            <form class="suggestion-form" id="noResultsSuggestionForm">
+                <input type="text" class="suggestion-input" id="noResultsSuggestionInput" placeholder="What product are you looking for?" required>
+                <button type="submit" class="suggestion-btn">Suggest Product</button>
+            </form>
+            <div class="suggestion-success" id="noResultsSuggestionSuccess">
+                Thank you for your suggestion! We'll review it and try to add this product soon.
+            </div>
+        </section>
+
         <!-- Categories -->
         <section class="categories-section">
             <div class="section-title">
@@ -2710,14 +2838,14 @@
     </footer>
 
     <script>
-        // Products data - expanded with more items
+        // Products data - updated with the new products
         const products = [
             {
                 id: 1,
-                name: "Kurkure",
-                weight: "1 pack (60g)",
+                name: "Kurkura",
+                weight: "100g",
                 price: 20,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                image: "https://dukaan.b-cdn.net/700x700/webp/projecteagle/images/de7eeb06-e3ff-4e2b-8cf0-82a4644a48eb.jpg",
                 category: "snacks",
                 badge: "Bestseller",
                 rating: 4.5,
@@ -2725,20 +2853,20 @@
             },
             {
                 id: 2,
-                name: "Lay's Potato Chips",
-                weight: "2 packs (52g each)",
-                price: 40,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                name: "Green Lay's",
+                weight: "100g",
+                price: 20,
+                image: "https://www.quickpantry.in/cdn/shop/products/lay-s-chile-limon-potato-chips-32-g-quick-pantry.jpg?v=1710539171",
                 category: "snacks",
                 rating: 4.3,
                 reviews: 89
             },
             {
                 id: 3,
-                name: "Uncle Chipps",
-                weight: "1 pack (55g)",
-                price: 20,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                name: "Cadbury Oreo Biscuit Chocolate",
+                weight: "200g",
+                price: 29,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfw4KC_vAmjW1O3iu4C18hiWVwdgrX6uH8BQ&s",
                 category: "snacks",
                 badge: "Popular",
                 rating: 4.7,
@@ -2746,67 +2874,170 @@
             },
             {
                 id: 4,
-                name: "Dairy Milk Silk Chocolate",
-                weight: "1 bar (60g)",
-                price: 100,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "essentials",
+                name: "Paracetamol 650 mg Tablets",
+                weight: "100g",
+                price: 99,
+                image: "https://www.doctrislifesciences.com/wp-content/uploads/2024/01/DSC00181.png",
+                category: "medicine",
+                badge: "Essential",
                 rating: 4.2,
                 reviews: 56
             },
             {
                 id: 5,
-                name: "Cadbury Oreo Cream Biscuits",
-                weight: "1 pack (113g)",
-                price: 29,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "essentials",
-                rating: 4.6,
-                reviews: 178
-            },
-            {
-                id: 6,
-                name: "Travel Pillow",
-                weight: "1 piece",
-                price: 490,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                name: "Pillow",
+                weight: "200g",
+                price: 149,
+                image: "https://sohumlinen.com/cdn/shop/files/final-4.jpg?v=1709032801",
                 category: "travel",
                 rating: 4.1,
                 reviews: 92
             },
             {
-                id: 7,
-                name: "Nescafe Gold Premium Coffee",
-                weight: "1 jar (50g)",
-                price: 190,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                id: 6,
+                name: "Bisler",
+                weight: "100g",
+                price: 19,
+                image: "https://m.media-amazon.com/images/I/41lwWkYltmL._AC_UF894,1000_QL80_.jpg",
                 category: "essentials",
                 rating: 4.4,
                 reviews: 156
             },
             {
-                id: 8,
-                name: "Chocolate Dream Cake",
-                weight: "200g slice",
-                price: 120,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
+                id: 7,
+                name: "Uncle's Chips",
+                weight: "200g",
+                price: 19,
+                image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/CIW/2025/6/15/d58a626c-41e6-49e2-b161-2a27f9bb9614_5466_1.png?updatedAt=1727158558988",
+                category: "snacks",
                 badge: "Must Try",
                 rating: 4.8,
                 reviews: 234
             },
             {
-                id: 9,
-                name: "Bingo Mad Angles",
-                weight: "1 pack (90g)",
-                price: 20,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
+                id: 8,
+                name: "Frooti",
+                weight: "100g",
+                price: 23,
+                image: "https://subz.store/wp-content/uploads/2025/04/frooti-drink-juicy-mango-bottle.jpg",
                 category: "snacks",
                 rating: 4.0,
                 reviews: 67
             },
             {
+                id: 9,
+                name: "Coca-Cola",
+                weight: "200g",
+                price: 39,
+                image: "https://m.media-amazon.com/images/I/81kx2IPueEL.jpg",
+                category: "snacks",
+                rating: 4.3,
+                reviews: 78
+            },
+            {
                 id: 10,
+                name: "Sunfeast Dark Fantasy",
+                weight: "100g",
+                price: 24,
+                image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQVKjfnryurlG-ApP7PDG3ZOfWyEJO5NxXWOQiucpflJeetLPcjPNRNGSWOIwMCisVmhSJrwzh_",
+                category: "snacks",
+                rating: 4.5,
+                reviews: 145
+            },
+            {
+                id: 11,
+                name: "Britannia Nutri",
+                weight: "200g",
+                price: 44,
+                image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT9uLgLFla4rP-VQlCo1TCIQounvCV0wSaTvhL15BUz0cBaZh83NbZFzfHhflajdB2akrYYZyuzkA",
+                category: "snacks",
+                rating: 4.2,
+                reviews: 103
+            },
+            {
+                id: 12,
+                name: "Chai",
+                weight: "100g",
+                price: 9,
+                image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_960,w_960//InstamartAssets/Chai.webp?updatedAt=1727158558988",
+                category: "snacks",
+                rating: 4.1,
+                reviews: 87
+            },
+            {
+                id: 13,
+                name: "Coffee",
+                weight: "200g",
+                price: 14,
+                image: "https://images.rouvy.com/IJWMo_78viqz6wBetXFSPCYGWuI=/center/middle/%2Fcms%2Fshutterstock_2052696470_min_deaebabc60%2Fshutterstock_2052696470_min_deaebabc60.jpg",
+                category: "meals",
+                rating: 4.3,
+                reviews: 112
+            },
+            {
+                id: 14,
+                name: "Shoes",
+                weight: "100g",
+                price: 399,
+                image: "https://images.rouvy.com/IJWMo_78viqz6wBetXFSPCYGWuI=/center/middle/%2Fcms%2Fshutterstock_2052696470_min_deaebabc60%2Fshutterstock_2052696470_min_deaebabc60.jpg",
+                category: "essentials",
+                badge: "Premium",
+                rating: 4.4,
+                reviews: 98
+            },
+            {
+                id: 15,
+                name: "Namkeen",
+                weight: "200g",
+                price: 29,
+                image: "https://www.pankaj-boutique.com/31498-large_default/namkeen-indian-nimbu-masala.jpg",
+                category: "snacks",
+                rating: 4.6,
+                reviews: 167
+            },
+            {
+                id: 16,
+                name: "Toilet paper",
+                weight: "100g",
+                price: 99,
+                image: "https://m.media-amazon.com/images/I/41KDKvAGT-L._AC_UF1000,1000_QL80_.jpg",
+                category: "essentials",
+                rating: 4.2,
+                reviews: 134
+            },
+            {
+                id: 17,
+                name: "Dettol Instant Hand Sanitizer",
+                weight: "200g",
+                price: 29,
+                image: "https://www.quickpantry.in/cdn/shop/products/dettol-instant-hand-sanitizer-original-quick-pantry-1.jpg?v=1710538783",
+                category: "essentials",
+                rating: 4.5,
+                reviews: 189
+            },
+            {
+                id: 18,
+                name: "Tissue Paper",
+                weight: "100g",
+                price: 49,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyV26kyBlR9Y5hI5vh9IOvrZcEJntarVTZSw&s",
+                category: "essentials",
+                rating: 4.7,
+                reviews: 156
+            },
+            {
+                id: 19,
+                name: "Lifebuoy Soap",
+                weight: "200g",
+                price: 9,
+                image: "https://5.imimg.com/data5/CU/KL/MB/SELLER-42401925/life-boy.jpg",
+                category: "essentials",
+                rating: 4.0,
+                reviews: 98
+            },
+            // Additional products for variety
+            {
+                id: 20,
                 name: "Travel Blanket",
                 weight: "1 piece",
                 price: 350,
@@ -2816,7 +3047,7 @@
                 reviews: 78
             },
             {
-                id: 11,
+                id: 21,
                 name: "Eye Mask for Travel",
                 weight: "1 piece",
                 price: 130,
@@ -2826,7 +3057,7 @@
                 reviews: 145
             },
             {
-                id: 12,
+                id: 22,
                 name: "Parle Hide & Seek Biscuits",
                 weight: "1 pack (100g)",
                 price: 30,
@@ -2836,7 +3067,7 @@
                 reviews: 103
             },
             {
-                id: 13,
+                id: 23,
                 name: "Mineral Water Bottle",
                 weight: "1 litre",
                 price: 20,
@@ -2846,7 +3077,7 @@
                 reviews: 87
             },
             {
-                id: 14,
+                id: 24,
                 name: "Fresh Fruit Juice",
                 weight: "500ml",
                 price: 40,
@@ -2854,398 +3085,6 @@
                 category: "essentials",
                 rating: 4.3,
                 reviews: 112
-            },
-            {
-                id: 15,
-                name: "Travel Neck Pillow",
-                weight: "1 piece",
-                price: 250,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "travel",
-                rating: 4.4,
-                reviews: 98
-            },
-            {
-                id: 16,
-                name: "Sandwich Combo",
-                weight: "1 plate",
-                price: 120,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
-                badge: "Combo",
-                rating: 4.6,
-                reviews: 167
-            },
-            {
-                id: 17,
-                name: "Veg Pasta",
-                weight: "1 plate",
-                price: 150,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
-                rating: 4.2,
-                reviews: 134
-            },
-            {
-                id: 18,
-                name: "Travel Power Bank",
-                weight: "1 piece",
-                price: 550,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "travel",
-                rating: 4.5,
-                reviews: 189
-            },
-            {
-                id: 19,
-                name: "Chocolate Chip Cookies",
-                weight: "1 pack (200g)",
-                price: 45,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "snacks",
-                rating: 4.7,
-                reviews: 156
-            },
-            {
-                id: 20,
-                name: "Masala Tea",
-                weight: "1 cup",
-                price: 15,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "essentials",
-                rating: 4.0,
-                reviews: 98
-            },
-            // New products
-            {
-                id: 21,
-                name: "Pani Puri Kit",
-                weight: "1 pack (4 servings)",
-                price: 80,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
-                badge: "Regional Special",
-                rating: 4.6,
-                reviews: 178
-            },
-            {
-                id: 22,
-                name: "Chole Bhature",
-                weight: "1 plate",
-                price: 130,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
-                badge: "North Indian",
-                rating: 4.5,
-                reviews: 203
-            },
-            {
-                id: 23,
-                name: "Dosa with Sambar",
-                weight: "1 plate",
-                price: 110,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
-                badge: "South Indian",
-                rating: 4.4,
-                reviews: 189
-            },
-            {
-                id: 24,
-                name: "Rajma Chawal",
-                weight: "1 plate",
-                price: 140,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
-                badge: "North Indian",
-                rating: 4.3,
-                reviews: 167
-            },
-            {
-                id: 25,
-                name: "Veg Biryani",
-                weight: "1 plate",
-                price: 160,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
-                badge: "Popular",
-                rating: 4.7,
-                reviews: 245
-            },
-            {
-                id: 26,
-                name: "Paneer Butter Masala",
-                weight: "1 plate",
-                price: 180,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
-                badge: "Special",
-                rating: 4.6,
-                reviews: 212
-            },
-            {
-                id: 27,
-                name: "Egg Roll",
-                weight: "1 piece",
-                price: 70,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
-                badge: "Quick Bite",
-                rating: 4.2,
-                reviews: 134
-            },
-            {
-                id: 28,
-                name: "Veg Momos",
-                weight: "6 pieces",
-                price: 90,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "meals",
-                badge: "Himalayan",
-                rating: 4.5,
-                reviews: 178
-            },
-            {
-                id: 29,
-                name: "Samosa",
-                weight: "2 pieces",
-                price: 30,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "snacks",
-                badge: "Classic",
-                rating: 4.4,
-                reviews: 223
-            },
-            {
-                id: 30,
-                name: "Vada Pav",
-                weight: "1 piece",
-                price: 25,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "snacks",
-                badge: "Mumbai Special",
-                rating: 4.6,
-                reviews: 189
-            },
-            {
-                id: 31,
-                name: "Kachori",
-                weight: "2 pieces",
-                price: 35,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "snacks",
-                badge: "Rajasthani",
-                rating: 4.3,
-                reviews: 156
-            },
-            {
-                id: 32,
-                name: "Aloo Bhujia",
-                weight: "1 pack (100g)",
-                price: 40,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "snacks",
-                badge: "Rajasthani",
-                rating: 4.5,
-                reviews: 178
-            },
-            {
-                id: 33,
-                name: "Mixture",
-                weight: "1 pack (200g)",
-                price: 50,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "snacks",
-                badge: "Traditional",
-                rating: 4.2,
-                reviews: 145
-            },
-            {
-                id: 34,
-                name: "Papad",
-                weight: "1 pack (10 pieces)",
-                price: 30,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "snacks",
-                badge: "Crispy",
-                rating: 4.1,
-                reviews: 123
-            },
-            {
-                id: 35,
-                name: "Peanuts",
-                weight: "1 pack (100g)",
-                price: 25,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "snacks",
-                badge: "Healthy",
-                rating: 4.0,
-                reviews: 98
-            },
-            {
-                id: 36,
-                name: "Cashew Nuts",
-                weight: "1 pack (50g)",
-                price: 120,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "snacks",
-                badge: "Premium",
-                rating: 4.6,
-                reviews: 167
-            },
-            {
-                id: 37,
-                name: "Almonds",
-                weight: "1 pack (50g)",
-                price: 150,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "snacks",
-                badge: "Healthy",
-                rating: 4.7,
-                reviews: 189
-            },
-            {
-                id: 38,
-                name: "Green Tea",
-                weight: "10 tea bags",
-                price: 60,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "essentials",
-                badge: "Healthy",
-                rating: 4.3,
-                reviews: 134
-            },
-            {
-                id: 39,
-                name: "Black Coffee",
-                weight: "10 sachets",
-                price: 50,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "essentials",
-                badge: "Instant",
-                rating: 4.1,
-                reviews: 112
-            },
-            {
-                id: 40,
-                name: "Soup",
-                weight: "1 cup",
-                price: 60,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "essentials",
-                badge: "Hot",
-                rating: 4.2,
-                reviews: 98
-            },
-            {
-                id: 41,
-                name: "Cold Drink",
-                weight: "500ml",
-                price: 40,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "essentials",
-                badge: "Refreshing",
-                rating: 4.0,
-                reviews: 156
-            },
-            {
-                id: 42,
-                name: "Energy Drink",
-                weight: "250ml",
-                price: 80,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "essentials",
-                badge: "Boost",
-                rating: 4.1,
-                reviews: 123
-            },
-            {
-                id: 43,
-                name: "Earphones",
-                weight: "1 piece",
-                price: 300,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "travel",
-                badge: "Entertainment",
-                rating: 4.2,
-                reviews: 178
-            },
-            {
-                id: 44,
-                name: "Travel Adapter",
-                weight: "1 piece",
-                price: 150,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "travel",
-                badge: "Essential",
-                rating: 4.3,
-                reviews: 145
-            },
-            {
-                id: 45,
-                name: "Travel Lock",
-                weight: "1 piece",
-                price: 100,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "travel",
-                badge: "Security",
-                rating: 4.1,
-                reviews: 112
-            },
-            {
-                id: 46,
-                name: "Hand Sanitizer",
-                weight: "1 bottle (50ml)",
-                price: 40,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "travel",
-                badge: "Hygiene",
-                rating: 4.4,
-                reviews: 189
-            },
-            {
-                id: 47,
-                name: "Wet Wipes",
-                weight: "1 pack (10 wipes)",
-                price: 30,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "travel",
-                badge: "Hygiene",
-                rating: 4.2,
-                reviews: 156
-            },
-            {
-                id: 48,
-                name: "Tissue Paper",
-                weight: "1 pack",
-                price: 20,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "travel",
-                badge: "Essential",
-                rating: 4.0,
-                reviews: 134
-            },
-            {
-                id: 49,
-                name: "Face Mask",
-                weight: "3 pieces",
-                price: 30,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "travel",
-                badge: "Safety",
-                rating: 4.1,
-                reviews: 178
-            },
-            {
-                id: 50,
-                name: "Travel Toiletry Kit",
-                weight: "1 set",
-                price: 200,
-                image: "https://i.ibb.co/L5YJ3Jz/railquick-logo.png",
-                category: "travel",
-                badge: "Complete",
-                rating: 4.5,
-                reviews: 201
             }
         ];
 
@@ -3254,7 +3093,8 @@
             essentials: products.filter(p => p.category === "essentials").length,
             travel: products.filter(p => p.category === "travel").length,
             snacks: products.filter(p => p.category === "snacks").length,
-            meals: products.filter(p => p.category === "meals").length
+            meals: products.filter(p => p.category === "meals").length,
+            medicine: products.filter(p => p.category === "medicine").length
         };
 
         // Cart state
@@ -3279,6 +3119,7 @@
             // Reset to home view
             document.getElementById('heroSection').style.display = 'block';
             document.getElementById('searchResultsSection').classList.remove('active');
+            document.getElementById('noResultsSection').classList.remove('active');
             
             // Clear search
             document.getElementById('searchInput').value = '';
@@ -3487,26 +3328,32 @@
                 // Reset to home view
                 document.getElementById('heroSection').style.display = 'block';
                 document.getElementById('searchResultsSection').classList.remove('active');
+                document.getElementById('noResultsSection').classList.remove('active');
                 renderProducts('all');
                 return;
             }
             
-            // Hide hero section and show search results
+            // Hide hero section
             document.getElementById('heroSection').style.display = 'none';
-            document.getElementById('searchResultsSection').classList.add('active');
             
             // Filter and render search results
             const filtered = products.filter(p => 
                 p.name.toLowerCase().includes(query.toLowerCase())
             );
             
-            const searchGrid = document.getElementById('searchResultsGrid');
-            searchGrid.innerHTML = '';
-            
             if (filtered.length === 0) {
-                searchGrid.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--gray-500);">No products found matching your search.</div>';
+                // Show no results section
+                document.getElementById('searchResultsSection').classList.remove('active');
+                document.getElementById('noResultsSection').classList.add('active');
                 return;
             }
+            
+            // Show search results
+            document.getElementById('noResultsSection').classList.remove('active');
+            document.getElementById('searchResultsSection').classList.add('active');
+            
+            const searchGrid = document.getElementById('searchResultsGrid');
+            searchGrid.innerHTML = '';
             
             filtered.forEach(product => {
                 const card = document.createElement('div');
@@ -3754,6 +3601,25 @@
                 goToHome({ preventDefault: () => {} });
             });
 
+            // No results suggestion form
+            document.getElementById('noResultsSuggestionForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const suggestion = document.getElementById('noResultsSuggestionInput').value;
+                
+                // For demo purposes, just log suggestion
+                console.log('No results suggestion:', suggestion);
+                
+                // Show success message
+                document.getElementById('noResultsSuggestionSuccess').style.display = 'block';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    document.getElementById('noResultsSuggestionForm').reset();
+                    document.getElementById('noResultsSuggestionSuccess').style.display = 'none';
+                }, 3000);
+            });
+
             // Cart FAB
             document.getElementById('cartFab').addEventListener('click', () => {
                 document.getElementById('cartSidebar').classList.add('open');
@@ -3957,7 +3823,8 @@
                 essentials: 'Essentials',
                 travel: 'Travel Essentials',
                 snacks: 'Snacks & Beverages',
-                meals: 'Meals'
+                meals: 'Meals',
+                medicine: 'Medicine'
             };
             
             title.textContent = categoryNames[category] || 'Products';
