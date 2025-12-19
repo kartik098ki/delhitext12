@@ -3828,7 +3828,7 @@
             });
         }
 
-        // Submit Feedback
+        // Submit Feedback - Fixed to properly capture and send feedback text
         async function submitFeedback() {
             const feedbackText = document.getElementById('feedbackText').value;
             
@@ -3847,10 +3847,12 @@
             const feedbackData = {
                 data: [{
                     rating: selectedRating,
-                    feedback_text: feedbackText,
+                    feedback_text: feedbackText, // This field name MUST match your Google Sheets column
                     timestamp: new Date().toISOString()
                 }]
             };
+            
+            console.log('Submitting feedback data:', feedbackData); // Debug log
             
             try {
                 // Send feedback data to Google Sheets
@@ -3861,6 +3863,9 @@
                     },
                     body: JSON.stringify(feedbackData)
                 });
+                
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
                 
                 if (response.ok) {
                     submitBtn.innerHTML = originalText;
@@ -3904,6 +3909,7 @@
                     document.getElementById('feedbackText').value = '';
                     document.querySelectorAll('.rating-star').forEach(s => {
                         s.style.color = 'var(--gray-300)';
+                        s.classList.remove('active');
                     });
                     selectedRating = 0;
                 } else {
