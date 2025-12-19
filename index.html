@@ -62,7 +62,7 @@
             margin-top: 0;
         }
 
-        /* Enhanced Top Bar */
+        /* Enhanced Top Bar - Removed Icons */
         .top-bar {
             background: linear-gradient(90deg, var(--zepto-green), var(--zepto-green-dark));
             color: white;
@@ -82,16 +82,6 @@
             position: relative;
             z-index: 1;
             flex-wrap: wrap;
-        }
-
-        .top-bar i {
-            font-size: 16px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
         }
 
         /* Hero Slider */
@@ -1636,6 +1626,98 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Recently Viewed Section */
+        .recently-viewed {
+            margin: 40px 0;
+            padding: 30px 0;
+            background: var(--gray-50);
+            border-radius: 20px;
+        }
+
+        .recently-viewed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+
+        .recently-viewed-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recently-viewed-title i {
+            color: var(--zepto-blue);
+        }
+
+        .recently-viewed-grid {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 0 20px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        .recently-viewed-grid::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .recently-viewed-card {
+            min-width: 180px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+
+        .recently-viewed-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--zepto-green);
+        }
+
+        .recently-viewed-image {
+            height: 120px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .recently-viewed-content {
+            padding: 12px;
+        }
+
+        .recently-viewed-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .recently-viewed-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .recently-viewed-price .price-currency {
+            font-size: 12px;
+            color: var(--zepto-green);
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .zepto-header {
@@ -1699,10 +1781,6 @@
                 padding: 0 10px;
                 flex-direction: column;
                 gap: 5px;
-            }
-            
-            .top-bar i {
-                font-size: 14px;
             }
             
             .categories-grid {
@@ -1854,6 +1932,42 @@
                 max-width: 300px;
                 justify-content: center;
             }
+            
+            /* Improved checkout modal for mobile */
+            #checkoutModal .zepto-success-card {
+                max-width: 95%;
+                padding: 30px 20px;
+                margin: 20px auto;
+            }
+            
+            #checkoutModal .zepto-success-card h2 {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            
+            #checkoutModal .zepto-success-card form {
+                margin-bottom: 10px;
+            }
+            
+            #checkoutModal .zepto-success-card form div {
+                margin-bottom: 15px;
+            }
+            
+            #checkoutModal .zepto-success-card form label {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+            
+            #checkoutModal .zepto-success-card form input {
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            #checkoutModal .zepto-success-card .checkout-btn {
+                padding: 14px;
+                font-size: 14px;
+                margin-top: 10px;
+            }
         }
 
         /* Custom Scrollbar */
@@ -1898,107 +2012,13 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-
-        /* Recently Viewed Section */
-        .recently-viewed {
-            margin: 40px 0;
-            padding: 30px 0;
-            background: var(--gray-50);
-            border-radius: 20px;
-        }
-
-        .recently-viewed-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 0 20px;
-        }
-
-        .recently-viewed-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .recently-viewed-title i {
-            color: var(--zepto-blue);
-        }
-
-        .recently-viewed-grid {
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            padding: 0 20px;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE and Edge */
-        }
-
-        .recently-viewed-grid::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
-        }
-
-        .recently-viewed-card {
-            min-width: 180px;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--gray-200);
-        }
-
-        .recently-viewed-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--zepto-green);
-        }
-
-        .recently-viewed-image {
-            height: 120px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .recently-viewed-content {
-            padding: 12px;
-        }
-
-        .recently-viewed-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 6px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .recently-viewed-price {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .recently-viewed-price .price-currency {
-            font-size: 12px;
-            color: var(--zepto-green);
-        }
     </style>
 </head>
 <body>
     <!-- Zepto Top Bar -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <i class="fas fa-bolt"></i>
             <span>Test Phase Live at New Delhi Railway Station</span>
-            <i class="fas fa-bolt"></i>
         </div>
     </div>
 
@@ -2323,22 +2343,6 @@
                         Phone Number
                     </label>
                     <input type="tel" style="width: 100%; padding: 15px; border: 2px solid var(--gray-300); border-radius: 12px; font-size: 15px;" id="contactNumber" pattern="[6-9][0-9]{9}" maxlength="10" required>
-                </div>
-                
-                <div style="margin-bottom: 25px;">
-                    <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark);">
-                        <i class="fas fa-train"></i>
-                        Train Number
-                    </label>
-                    <input type="text" style="width: 100%; padding: 15px; border: 2px solid var(--gray-300); border-radius: 12px; font-size: 15px;" id="trainNumber" required>
-                </div>
-                
-                <div style="margin-bottom: 25px;">
-                    <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark);">
-                        <i class="fas fa-chair"></i>
-                        Seat/Coach Number
-                    </label>
-                    <input type="text" style="width: 100%; padding: 15px; border: 2px solid var(--gray-300); border-radius: 12px; font-size: 15px;" id="seatNumber" required>
                 </div>
                 
                 <div style="background: var(--gray-50); padding: 25px; border-radius: 16px; margin-bottom: 30px;">
@@ -3693,11 +3697,9 @@
             
             const customerName = document.getElementById('customerName').value;
             const contactNumber = document.getElementById('contactNumber').value;
-            const trainNumber = document.getElementById('trainNumber').value;
-            const seatNumber = document.getElementById('seatNumber').value;
             
             // Validate
-            if (!customerName || !contactNumber || !trainNumber || !seatNumber) {
+            if (!customerName || !contactNumber) {
                 showToast('error', 'Error', 'Please fill all fields', 3000);
                 return;
             }
@@ -3732,8 +3734,6 @@
                     order_id: orderId,
                     customer_name: customerName,
                     contact_number: contactNumber,
-                    train_number: trainNumber,
-                    seat_number: seatNumber,
                     order_items: JSON.stringify(orderItems),
                     total_amount: totalPrice,
                     order_date: new Date().toISOString(),
