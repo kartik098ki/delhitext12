@@ -3751,6 +3751,10 @@
                     body: JSON.stringify(orderData)
                 });
                 
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+                console.log('Response text:', await response.text());
+                
                 if (response.ok) {
                     // Reset button
                     submitBtn.innerHTML = originalText;
