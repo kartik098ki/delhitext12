@@ -1621,6 +1621,21 @@
             box-shadow: 0 0 0 3px rgba(12, 131, 31, 0.1);
         }
 
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .zepto-header {
@@ -1884,24 +1899,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Loyalty Points Badge */
-        .loyalty-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: linear-gradient(135deg, var(--zepto-purple), #7B1FA2);
-            color: white;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 6px 12px;
-            border-radius: 6px;
-            z-index: 2;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
         /* Recently Viewed Section */
         .recently-viewed {
             margin: 40px 0;
@@ -2000,8 +1997,8 @@
     <div class="top-bar">
         <div class="top-bar-content">
             <i class="fas fa-bolt"></i>
-            <span>🚂 This is a Test Phase - Experience Premium Train Delivery</span>
-            <i class="fas fa-train"></i>
+            <span>Test Phase Live at New Delhi Railway Station</span>
+            <i class="fas fa-bolt"></i>
         </div>
     </div>
 
@@ -2328,6 +2325,22 @@
                     <input type="tel" style="width: 100%; padding: 15px; border: 2px solid var(--gray-300); border-radius: 12px; font-size: 15px;" id="contactNumber" pattern="[6-9][0-9]{9}" maxlength="10" required>
                 </div>
                 
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark);">
+                        <i class="fas fa-train"></i>
+                        Train Number
+                    </label>
+                    <input type="text" style="width: 100%; padding: 15px; border: 2px solid var(--gray-300); border-radius: 12px; font-size: 15px;" id="trainNumber" required>
+                </div>
+                
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark);">
+                        <i class="fas fa-chair"></i>
+                        Seat/Coach Number
+                    </label>
+                    <input type="text" style="width: 100%; padding: 15px; border: 2px solid var(--gray-300); border-radius: 12px; font-size: 15px;" id="seatNumber" required>
+                </div>
+                
                 <div style="background: var(--gray-50); padding: 25px; border-radius: 16px; margin-bottom: 30px;">
                     <div style="font-weight: 700; font-size: 18px; margin-bottom: 20px; color: var(--dark); display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-receipt"></i>
@@ -2337,10 +2350,6 @@
                     <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 22px; padding-top: 20px; border-top: 2px solid var(--gray-300); color: var(--dark);">
                         <span>Total Amount:</span>
                         <span id="summaryTotal">₹0</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 16px; padding-top: 10px; color: var(--zepto-green);">
-                        <span>Loyalty Points Earned:</span>
-                        <span id="loyaltyPointsEarned">0</span>
                     </div>
                 </div>
                 
@@ -2496,8 +2505,7 @@
                 category: "snacks",
                 badge: "Bestseller",
                 rating: 4.5,
-                reviews: 127,
-                points: 2
+                reviews: 127
             },
             {
                 id: 2,
@@ -2507,8 +2515,7 @@
                 image: "https://www.quickpantry.in/cdn/shop/products/lay-s-chile-limon-potato-chips-32-g-quick-pantry.jpg?v=1710539171",
                 category: "snacks",
                 rating: 4.3,
-                reviews: 89,
-                points: 2
+                reviews: 89
             },
             {
                 id: 3,
@@ -2519,8 +2526,7 @@
                 category: "snacks",
                 badge: "Popular",
                 rating: 4.7,
-                reviews: 203,
-                points: 3
+                reviews: 203
             },
             {
                 id: 4,
@@ -2531,8 +2537,7 @@
                 category: "medicine",
                 badge: "Essential",
                 rating: 4.2,
-                reviews: 56,
-                points: 10
+                reviews: 56
             },
             {
                 id: 5,
@@ -2542,8 +2547,7 @@
                 image: "https://sohumlinen.com/cdn/shop/files/final-4.jpg?v=1709032801",
                 category: "travel",
                 rating: 4.1,
-                reviews: 92,
-                points: 15
+                reviews: 92
             },
             {
                 id: 6,
@@ -2553,8 +2557,7 @@
                 image: "https://m.media-amazon.com/images/I/41lwWkYltmL._AC_UF894,1000_QL80_.jpg",
                 category: "essentials",
                 rating: 4.4,
-                reviews: 156,
-                points: 2
+                reviews: 156
             },
             {
                 id: 7,
@@ -2565,8 +2568,7 @@
                 category: "snacks",
                 badge: "Must Try",
                 rating: 4.8,
-                reviews: 234,
-                points: 2
+                reviews: 234
             },
             {
                 id: 8,
@@ -2576,8 +2578,7 @@
                 image: "https://subz.store/wp-content/uploads/2025/04/frooti-drink-juicy-mango-bottle.jpg",
                 category: "snacks",
                 rating: 4.0,
-                reviews: 67,
-                points: 2
+                reviews: 67
             },
             {
                 id: 9,
@@ -2587,8 +2588,7 @@
                 image: "https://m.media-amazon.com/images/I/81kx2IPueEL.jpg",
                 category: "snacks",
                 rating: 4.3,
-                reviews: 78,
-                points: 4
+                reviews: 78
             },
             {
                 id: 10,
@@ -2598,8 +2598,7 @@
                 image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT9uLgLFla4rP-VQlCo1TCIQounvCV0wSaTvhL15BUz0cBaZh83NbZFzfHhflajdB2akrYYZyuzkA",
                 category: "snacks",
                 rating: 4.2,
-                reviews: 103,
-                points: 4
+                reviews: 103
             },
             {
                 id: 11,
@@ -2610,8 +2609,7 @@
                 category: "snacks",
                 badge: "Hot",
                 rating: 4.6,
-                reviews: 187,
-                points: 1
+                reviews: 187
             },
             {
                 id: 12,
@@ -2622,8 +2620,7 @@
                 category: "snacks",
                 badge: "Spicy",
                 rating: 4.5,
-                reviews: 145,
-                points: 3
+                reviews: 145
             },
             {
                 id: 13,
@@ -2633,8 +2630,7 @@
                 image: "https://m.media-amazon.com/images/I/41KDKvAGT-L._AC_UF1000,1000_QL80_.jpg",
                 category: "essentials",
                 rating: 4.1,
-                reviews: 67,
-                points: 10
+                reviews: 67
             },
             {
                 id: 14,
@@ -2645,8 +2641,7 @@
                 category: "essentials",
                 badge: "Hygiene",
                 rating: 4.3,
-                reviews: 156,
-                points: 3
+                reviews: 156
             },
             {
                 id: 15,
@@ -2656,8 +2651,7 @@
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyV26kyBlR9Y5hI5vh9IOvrZcEJntarVTZSw&s",
                 category: "essentials",
                 rating: 4.2,
-                reviews: 89,
-                points: 5
+                reviews: 89
             },
             {
                 id: 16,
@@ -2668,8 +2662,7 @@
                 category: "essentials",
                 badge: "Essential",
                 rating: 4.4,
-                reviews: 112,
-                points: 1
+                reviews: 112
             },
             {
                 id: 17,
@@ -2680,8 +2673,7 @@
                 category: "snacks",
                 badge: "Premium",
                 rating: 4.7,
-                reviews: 198,
-                points: 4
+                reviews: 198
             },
             {
                 id: 18,
@@ -2691,8 +2683,7 @@
                 image: "https://cdn.quicksell.co/-NgZTIJVW7YR__darKRi/products/-NsSlvsooDH6oNZBlEMX.jpg",
                 category: "snacks",
                 rating: 4.5,
-                reviews: 167,
-                points: 3
+                reviews: 167
             },
             {
                 id: 19,
@@ -2702,8 +2693,7 @@
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSw4I4KGbuahPQUr2Itn2cSe01jc423_u_Ww&s",
                 category: "snacks",
                 rating: 4.3,
-                reviews: 145,
-                points: 3
+                reviews: 145
             },
             {
                 id: 20,
@@ -2713,8 +2703,7 @@
                 image: "https://m.media-amazon.com/images/I/619TsWnqsTL.jpg",
                 category: "snacks",
                 rating: 4.4,
-                reviews: 123,
-                points: 4
+                reviews: 123
             },
             {
                 id: 21,
@@ -2724,8 +2713,7 @@
                 image: "https://d3kgrlupo77sg7.cloudfront.net/media/l3-grocery3.shopnix.org/images/products/cd003.20180827095607.webp",
                 category: "snacks",
                 rating: 4.5,
-                reviews: 156,
-                points: 4
+                reviews: 156
             },
             {
                 id: 22,
@@ -2735,8 +2723,7 @@
                 image: "https://cdn.uengage.io/uploads/5/image-121421-1716282404.jpeg",
                 category: "snacks",
                 rating: 4.2,
-                reviews: 98,
-                points: 4
+                reviews: 98
             },
             {
                 id: 23,
@@ -2747,8 +2734,7 @@
                 category: "snacks",
                 badge: "Quick Meal",
                 rating: 4.6,
-                reviews: 234,
-                points: 2
+                reviews: 234
             },
             {
                 id: 24,
@@ -2758,8 +2744,7 @@
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5U8l5lGeHTQAQWoGJ_z3D2G7ZTI72049pmA&s",
                 category: "snacks",
                 rating: 4.1,
-                reviews: 76,
-                points: 2
+                reviews: 76
             },
             {
                 id: 25,
@@ -2770,8 +2755,7 @@
                 category: "snacks",
                 badge: "Premium",
                 rating: 4.7,
-                reviews: 189,
-                points: 8
+                reviews: 189
             },
             {
                 id: 26,
@@ -2782,8 +2766,7 @@
                 category: "snacks",
                 badge: "Premium",
                 rating: 4.8,
-                reviews: 201,
-                points: 12
+                reviews: 201
             },
             {
                 id: 27,
@@ -2793,8 +2776,7 @@
                 image: "https://www.newrameshkirana.com/wp-content/uploads/2020/06/SIM_6736-scaled.jpg",
                 category: "snacks",
                 rating: 4.3,
-                reviews: 112,
-                points: 4
+                reviews: 112
             },
             {
                 id: 28,
@@ -2805,8 +2787,7 @@
                 category: "snacks",
                 badge: "Premium",
                 rating: 4.6,
-                reviews: 167,
-                points: 9
+                reviews: 167
             },
             {
                 id: 29,
@@ -2816,8 +2797,7 @@
                 image: "https://www.quickpantry.in/cdn/shop/products/britannia-nutri-choice-hi-fibre-digestive-biscuits-100-g-quick-pantry.jpg?v=1710538222",
                 category: "snacks",
                 rating: 4.2,
-                reviews: 134,
-                points: 4
+                reviews: 134
             },
             {
                 id: 30,
@@ -2828,8 +2808,7 @@
                 category: "snacks",
                 badge: "Premium",
                 rating: 4.5,
-                reviews: 178,
-                points: 5
+                reviews: 178
             },
             {
                 id: 31,
@@ -2840,8 +2819,7 @@
                 category: "medicine",
                 badge: "Essential",
                 rating: 4.4,
-                reviews: 156,
-                points: 9
+                reviews: 156
             },
             {
                 id: 32,
@@ -2852,8 +2830,7 @@
                 category: "medicine",
                 badge: "Essential",
                 rating: 4.3,
-                reviews: 123,
-                points: 5
+                reviews: 123
             },
             {
                 id: 33,
@@ -2864,8 +2841,7 @@
                 category: "medicine",
                 badge: "Essential",
                 rating: 4.5,
-                reviews: 189,
-                points: 12
+                reviews: 189
             },
             {
                 id: 34,
@@ -2876,8 +2852,7 @@
                 category: "travel",
                 badge: "Premium",
                 rating: 4.6,
-                reviews: 145,
-                points: 25
+                reviews: 145
             },
             {
                 id: 35,
@@ -2887,8 +2862,7 @@
                 image: "https://www.samsonite.in/dw/image/v2/AAWQ_PRD/on/demandware.static/-/Sites-Samsonite/default/dwd21d99d4/images/travel-essentials-eyemask-cool-gel-ear-plug/hi-res/132431_1041_hi-res_FRONT34_1.jpg?sw=500&sh=750",
                 category: "travel",
                 rating: 4.2,
-                reviews: 98,
-                points: 8
+                reviews: 98
             },
             {
                 id: 36,
@@ -2899,8 +2873,7 @@
                 category: "travel",
                 badge: "Premium",
                 rating: 4.7,
-                reviews: 201,
-                points: 18
+                reviews: 201
             },
             {
                 id: 37,
@@ -2910,8 +2883,7 @@
                 image: "https://www.speedo.in/cdn/shop/products/800237414491_2.webp?v=1750922999&width=800",
                 category: "travel",
                 rating: 4.1,
-                reviews: 87,
-                points: 4
+                reviews: 87
             },
             {
                 id: 38,
@@ -2922,8 +2894,7 @@
                 category: "essentials",
                 badge: "Hygiene",
                 rating: 4.3,
-                reviews: 134,
-                points: 5
+                reviews: 134
             },
             {
                 id: 39,
@@ -2934,8 +2905,7 @@
                 category: "essentials",
                 badge: "Hygiene",
                 rating: 4.2,
-                reviews: 112,
-                points: 6
+                reviews: 112
             },
             {
                 id: 40,
@@ -2946,8 +2916,7 @@
                 category: "essentials",
                 badge: "Hygiene",
                 rating: 4.0,
-                reviews: 98,
-                points: 3
+                reviews: 98
             }
         ];
 
@@ -3008,9 +2977,15 @@
         let currentFilter = 'all';
         let currentSearchQuery = '';
         let selectedRating = 0;
-        let loyaltyPoints = 0;
         let recentlyViewed = [];
-        let appliedPromoCode = '';
+
+        // API endpoints for Google Sheets
+        const API_ENDPOINTS = {
+            orders: 'https://sheetdb.io/api/v1/dqzrrfxybkjx2',
+            feedback: 'https://sheetdb.io/api/v1/uz6ybjgp7dudj',
+            suggestions: 'https://sheetdb.io/api/v1/2dlah0dlg86y8',
+            missingProducts: 'https://sheetdb.io/api/v1/7v1c96y1nkrno'
+        };
 
         // Toast System
         function showToast(type, title, message, duration = 3000) {
@@ -3177,7 +3152,7 @@
         }
 
         // Suggest Missing Product
-        function suggestMissingProduct() {
+        async function suggestMissingProduct() {
             const input = document.getElementById('missingProductInput');
             const product = input.value.trim();
             
@@ -3186,12 +3161,39 @@
                 return;
             }
             
-            // In real app, send to Google Sheets
+            // Show loading state
             const success = document.getElementById('missingProductSuccess');
+            success.innerHTML = '<div class="loading-spinner"></div> Submitting your suggestion...';
             success.classList.add('show');
-            input.value = '';
             
-            showToast('success', 'Thank You!', 'Your suggestion has been recorded', 3000);
+            try {
+                // Send data to Google Sheets
+                const response = await fetch(API_ENDPOINTS.missingProducts, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        data: [{
+                            product_name: product,
+                            timestamp: new Date().toISOString(),
+                            source: 'Search Results'
+                        }]
+                    })
+                });
+                
+                if (response.ok) {
+                    input.value = '';
+                    success.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your suggestion! We\'ll review it and try to add this product soon.';
+                    showToast('success', 'Thank You!', 'Your suggestion has been recorded', 3000);
+                } else {
+                    throw new Error('Failed to submit suggestion');
+                }
+            } catch (error) {
+                console.error('Error submitting suggestion:', error);
+                success.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to submit. Please try again.';
+                showToast('error', 'Error', 'Failed to submit suggestion. Please try again.', 3000);
+            }
             
             // Hide success message after 5 seconds
             setTimeout(() => {
@@ -3200,7 +3202,7 @@
         }
 
         // Suggest Missing Product - Mobile
-        function suggestMissingProductMobile() {
+        async function suggestMissingProductMobile() {
             const input = document.getElementById('mobileMissingProductInput');
             const product = input.value.trim();
             
@@ -3209,12 +3211,39 @@
                 return;
             }
             
-            // In real app, send to Google Sheets
+            // Show loading state
             const success = document.getElementById('mobileMissingProductSuccess');
+            success.innerHTML = '<div class="loading-spinner"></div> Submitting your suggestion...';
             success.classList.add('show');
-            input.value = '';
             
-            showToast('success', 'Thank You!', 'Your suggestion has been recorded', 3000);
+            try {
+                // Send data to Google Sheets
+                const response = await fetch(API_ENDPOINTS.missingProducts, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        data: [{
+                            product_name: product,
+                            timestamp: new Date().toISOString(),
+                            source: 'Mobile Search'
+                        }]
+                    })
+                });
+                
+                if (response.ok) {
+                    input.value = '';
+                    success.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your suggestion! We\'ll review it and try to add this product soon.';
+                    showToast('success', 'Thank You!', 'Your suggestion has been recorded', 3000);
+                } else {
+                    throw new Error('Failed to submit suggestion');
+                }
+            } catch (error) {
+                console.error('Error submitting suggestion:', error);
+                success.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to submit. Please try again.';
+                showToast('error', 'Error', 'Failed to submit suggestion. Please try again.', 3000);
+            }
             
             // Hide success message after 5 seconds
             setTimeout(() => {
@@ -3223,7 +3252,7 @@
         }
 
         // Submit General Suggestion
-        function submitGeneralSuggestion() {
+        async function submitGeneralSuggestion() {
             const input = document.getElementById('generalSuggestionInput');
             const suggestion = input.value.trim();
             
@@ -3232,12 +3261,39 @@
                 return;
             }
             
-            // In real app, send to Google Sheets
+            // Show loading state
             const success = document.getElementById('generalSuggestionSuccess');
+            success.innerHTML = '<div class="loading-spinner"></div> Submitting your suggestion...';
             success.classList.add('show');
-            input.value = '';
             
-            showToast('success', 'Thank You!', 'Your feedback has been recorded', 3000);
+            try {
+                // Send data to Google Sheets
+                const response = await fetch(API_ENDPOINTS.suggestions, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        data: [{
+                            suggestion: suggestion,
+                            timestamp: new Date().toISOString(),
+                            source: 'Feedback Section'
+                        }]
+                    })
+                });
+                
+                if (response.ok) {
+                    input.value = '';
+                    success.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your suggestion! We\'ll review it and get back to you soon.';
+                    showToast('success', 'Thank You!', 'Your feedback has been recorded', 3000);
+                } else {
+                    throw new Error('Failed to submit suggestion');
+                }
+            } catch (error) {
+                console.error('Error submitting suggestion:', error);
+                success.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to submit. Please try again.';
+                showToast('error', 'Error', 'Failed to submit suggestion. Please try again.', 3000);
+            }
             
             // Hide success message after 5 seconds
             setTimeout(() => {
@@ -3391,7 +3447,6 @@
                 
                 card.innerHTML = `
                     ${product.badge ? `<div class="product-badge"><i class="fas fa-fire"></i> ${product.badge}</div>` : ''}
-                    ${product.points > 5 ? `<div class="loyalty-badge"><i class="fas fa-coins"></i> ${product.points} pts</div>` : ''}
                     <div class="product-image-container">
                         <img src="${product.image}" alt="${product.name}" class="product-image" onclick="viewProduct(${product.id})">
                     </div>
@@ -3538,7 +3593,6 @@
             // Update cart counts
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const totalPoints = cart.reduce((sum, item) => sum + (item.points * item.quantity), 0);
             
             document.getElementById('cartCountDesktop').textContent = totalItems;
             document.getElementById('cartCountMobile').textContent = totalItems;
@@ -3589,12 +3643,6 @@
                 
                 cartItems.appendChild(cartItem);
             });
-            
-            // Update loyalty points in cart
-            const loyaltyPointsEl = document.getElementById('loyaltyPointsEarned');
-            if (loyaltyPointsEl) {
-                loyaltyPointsEl.textContent = `${totalPoints} points`;
-            }
         }
 
         // Remove from Cart
@@ -3617,7 +3665,6 @@
             // Update order summary
             const summaryItems = document.getElementById('orderSummaryItems');
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const totalPoints = cart.reduce((sum, item) => sum + (item.points * item.quantity), 0);
             
             summaryItems.innerHTML = '';
             cart.forEach(item => {
@@ -3631,7 +3678,6 @@
             });
             
             document.getElementById('summaryTotal').textContent = `₹${totalPrice}`;
-            document.getElementById('loyaltyPointsEarned').textContent = `${totalPoints} points`;
             
             // Clear form
             document.getElementById('checkoutForm').reset();
@@ -3647,9 +3693,11 @@
             
             const customerName = document.getElementById('customerName').value;
             const contactNumber = document.getElementById('contactNumber').value;
+            const trainNumber = document.getElementById('trainNumber').value;
+            const seatNumber = document.getElementById('seatNumber').value;
             
             // Validate
-            if (!customerName || !contactNumber) {
+            if (!customerName || !contactNumber || !trainNumber || !seatNumber) {
                 showToast('error', 'Error', 'Please fill all fields', 3000);
                 return;
             }
@@ -3662,39 +3710,79 @@
             // Show loading state
             const submitBtn = document.getElementById('placeOrderBtn');
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.innerHTML = '<div class="loading-spinner"></div> Processing...';
             submitBtn.disabled = true;
             
-            // Simulate API call
-            setTimeout(() => {
+            // Prepare order data
+            const orderItems = cart.map(item => ({
+                name: item.name,
+                price: item.price,
+                quantity: item.quantity,
+                total: item.price * item.quantity
+            }));
+            
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Generate order ID
+            const orderId = 'RQ' + Date.now();
+            
+            // Prepare order data for Google Sheets
+            const orderData = {
+                data: [{
+                    order_id: orderId,
+                    customer_name: customerName,
+                    contact_number: contactNumber,
+                    train_number: trainNumber,
+                    seat_number: seatNumber,
+                    order_items: JSON.stringify(orderItems),
+                    total_amount: totalPrice,
+                    order_date: new Date().toISOString(),
+                    status: 'Pending'
+                }]
+            };
+            
+            try {
+                // Send order data to Google Sheets
+                const response = await fetch(API_ENDPOINTS.orders, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(orderData)
+                });
+                
+                if (response.ok) {
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Close checkout modal
+                    closeModal('checkoutModal');
+                    
+                    // Clear cart
+                    cart = [];
+                    updateCart();
+                    renderProducts();
+                    
+                    // Show success message
+                    showToast('success', 'Order Placed!', `Your order #${orderId} has been placed successfully!`, 3000);
+                    
+                    // Open feedback modal directly
+                    setTimeout(() => {
+                        openModal('feedbackModal');
+                    }, 1000);
+                } else {
+                    throw new Error('Failed to place order');
+                }
+            } catch (error) {
+                console.error('Error placing order:', error);
+                
                 // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
                 
-                // Close checkout modal
-                closeModal('checkoutModal');
-                
-                // Calculate loyalty points earned
-                const pointsEarned = cart.reduce((sum, item) => sum + (item.points * item.quantity), 0);
-                loyaltyPoints += pointsEarned;
-                
-                // Generate order ID
-                const orderId = 'RQ' + Date.now();
-                
-                // Clear cart
-                cart = [];
-                updateCart();
-                renderProducts();
-                
-                // Show success message
-                showToast('success', 'Order Placed!', `Your order #${orderId} has been placed successfully! You earned ${pointsEarned} loyalty points.`, 3000);
-                
-                // Open feedback modal directly
-                setTimeout(() => {
-                    openModal('feedbackModal');
-                }, 1000);
-                
-            }, 2000);
+                showToast('error', 'Error', 'Failed to place order. Please try again.', 3000);
+            }
         });
 
         // Initialize Rating Stars with improved interactions
@@ -3744,7 +3832,7 @@
         }
 
         // Submit Feedback
-        function submitFeedback() {
+        async function submitFeedback() {
             const feedbackText = document.getElementById('feedbackText').value;
             
             if (selectedRating === 0) {
@@ -3755,55 +3843,83 @@
             // Show loading
             const submitBtn = document.querySelector('#feedbackModal .checkout-btn');
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.innerHTML = '<div class="loading-spinner"></div> Submitting...';
             submitBtn.disabled = true;
             
-            // Simulate API call
-            setTimeout(() => {
+            // Prepare feedback data for Google Sheets
+            const feedbackData = {
+                data: [{
+                    rating: selectedRating,
+                    feedback_text: feedbackText,
+                    timestamp: new Date().toISOString()
+                }]
+            };
+            
+            try {
+                // Send feedback data to Google Sheets
+                const response = await fetch(API_ENDPOINTS.feedback, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(feedbackData)
+                });
+                
+                if (response.ok) {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Close feedback modal
+                    closeModal('feedbackModal');
+                    
+                    // Show thank you message
+                    const thankYouModal = document.getElementById('thankYouModal');
+                    thankYouModal.classList.add('show');
+                    
+                    // Update thank you message based on rating
+                    const thankYouMessage = document.getElementById('thankYouMessage');
+                    if (selectedRating >= 4) {
+                        thankYouMessage.textContent = "We're thrilled you had a great experience! Your feedback helps us continue to improve our service.";
+                    } else {
+                        thankYouMessage.textContent = "Thank you for your honest feedback. We're committed to improving our service based on your suggestions.";
+                    }
+                    
+                    // Redirect to home page after 5 seconds
+                    let seconds = 5;
+                    const countdownEl = document.getElementById('thankYouCountdown');
+                    
+                    const updateCountdown = () => {
+                        countdownEl.textContent = `Redirecting to home page in ${seconds} seconds...`;
+                        seconds--;
+                        
+                        if (seconds < 0) {
+                            thankYouModal.classList.remove('show');
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            filterProducts('all');
+                        } else {
+                            setTimeout(updateCountdown, 1000);
+                        }
+                    };
+                    
+                    updateCountdown();
+                    
+                    // Reset form
+                    document.getElementById('feedbackText').value = '';
+                    document.querySelectorAll('.rating-star').forEach(s => {
+                        s.style.color = 'var(--gray-300)';
+                    });
+                    selectedRating = 0;
+                } else {
+                    throw new Error('Failed to submit feedback');
+                }
+            } catch (error) {
+                console.error('Error submitting feedback:', error);
+                
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
                 
-                // Close feedback modal
-                closeModal('feedbackModal');
-                
-                // Show thank you message
-                const thankYouModal = document.getElementById('thankYouModal');
-                thankYouModal.classList.add('show');
-                
-                // Update thank you message based on rating
-                const thankYouMessage = document.getElementById('thankYouMessage');
-                if (selectedRating >= 4) {
-                    thankYouMessage.textContent = "We're thrilled you had a great experience! Your feedback helps us continue to improve our service.";
-                } else {
-                    thankYouMessage.textContent = "Thank you for your honest feedback. We're committed to improving our service based on your suggestions.";
-                }
-                
-                // Redirect to home page after 5 seconds
-                let seconds = 5;
-                const countdownEl = document.getElementById('thankYouCountdown');
-                
-                const updateCountdown = () => {
-                    countdownEl.textContent = `Redirecting to home page in ${seconds} seconds...`;
-                    seconds--;
-                    
-                    if (seconds < 0) {
-                        thankYouModal.classList.remove('show');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        filterProducts('all');
-                    } else {
-                        setTimeout(updateCountdown, 1000);
-                    }
-                };
-                
-                updateCountdown();
-                
-                // Reset form
-                document.getElementById('feedbackText').value = '';
-                document.querySelectorAll('.rating-star').forEach(s => {
-                    s.style.color = 'var(--gray-300)';
-                });
-                selectedRating = 0;
-            }, 1500);
+                showToast('error', 'Error', 'Failed to submit feedback. Please try again.', 3000);
+            }
         }
 
         // Open Feedback Modal
